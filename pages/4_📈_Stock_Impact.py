@@ -105,8 +105,15 @@ if run_sim and exporters and selected_hardware:
     )
 
     # --- Summary Stats ---
-    pub_impacts = result.company_impacts[result.company_impacts["company_name"].isin(PUBLIC_TICKERS.keys())]
-    priv_impacts = result.company_impacts[result.company_impacts["company_name"].isin(PRIVATE_COMPANIES)]
+    pub_impacts = result.company_impacts[result.company_impacts["company_name"].isin(PUBLIC_TICKERS.keys())].copy()
+    priv_impacts = result.company_impacts[result.company_impacts["company_name"].isin(PRIVATE_COMPANIES)].copy()
+
+    # Sort: exposed companies first, then by impact magnitude
+    pub_impacts["_sort_key"] = pub_impacts["trade_hit_millions"].apply(lambda x: (0 if x > 0 else 1, -abs(x)))
+    pub_impacts = pub_impacts.sort_values("_sort_key").drop(columns="_sort_key")
+
+    priv_impacts["_sort_key"] = priv_impacts["trade_hit_millions"].apply(lambda x: (0 if x > 0 else 1, -abs(x)))
+    priv_impacts = priv_impacts.sort_values("_sort_key").drop(columns="_sort_key")
 
     s1, s2, s3, s4 = st.columns(4)
     s1.metric("Total Trade Reduction", f"${result.total_trade_reduction_millions:,.0f}M")
@@ -120,42 +127,42 @@ if run_sim and exporters and selected_hardware:
     tab_public, tab_private = st.tabs(["📊 Publicly Traded", "🔒 Private / Predicted"])
 
     with tab_public:
-        if pub_impacts.empty:
-            st.info("No public companies directly affected by this shock.")
-        else:
-            st.subheader("Public Company Impact")
+        st.subheader("Public Company Impact")
 
-            for _, row in pub_impacts.iterrows():
-                company = row["company_name"]
-                ticker = PUBLIC_TICKERS.get(company, "N/A")
-                impact = row["estimated_stock_impact_pct"]
+        for _, row in pub_impacts.iterrows():
+            company = row["company_name"]
+            ticker = PUBLIC_TICKERS.get(company, "N/A")
+            impact = row["estimated_stock_impact_pct"]
+            trade_hit = row["trade_hit_millions"]
+            has_exposure = trade_hit > 0
 
-                # Company card container
-                with st.container(border=True):
-                    # Header row
-                    header_cols = st.columns([2, 1, 1])
-                    with header_cols[0]:
-                        st.markdown(f"### {company}")
-                        caption = f"Ticker: `{ticker}`"
-                        if company == "SMIC":
-                            caption += " | 🇭🇰 Hong Kong only"
-                        st.caption(caption)
-                    with header_cols[1]:
+            with st.container(border=True):
+                header_cols = st.columns([2, 1, 1])
+                with header_cols[0]:
+                    st.markdown(f"### {company}")
+                    caption = f"Ticker: `{ticker}`"
+                    if company == "SMIC":
+                        caption += " | 🇭🇰 Hong Kong only"
+                    st.caption(caption)
+                with header_cols[1]:
+                    if has_exposure:
                         st.metric(
                             label="Est. Stock Impact (90-day)",
                             value=f"{impact:+.1f}%",
                             help="Projected stock price change within 90 days of the shock, based on trade exposure × sector multiple (~4×).",
                         )
-                    with header_cols[2]:
-                        mc = market_caps.get(company)
-                        if mc:
-                            st.metric("Market Cap", f"${mc:.1f}B")
-                        else:
-                            st.caption("Market cap unavailable")
+                    else:
+                        st.metric(label="Est. Stock Impact", value="No exposure")
+                with header_cols[2]:
+                    mc = market_caps.get(company)
+                    if mc:
+                        st.metric("Market Cap", f"${mc:.1f}B")
+                    else:
+                        st.caption("Market cap unavailable")
 
-                    st.divider()
+                st.divider()
 
-                    # Chart row
+                if has_exposure:
                     hist = stock_histories.get(company)
                     if hist is not None and not hist.empty:
                         date_col = "Date" if "Date" in hist.columns else "date"
@@ -167,19 +174,17 @@ if run_sim and exporters and selected_hardware:
                             shock_date=latest_date,
                             company_name=company,
                             ticker=ticker,
-                            trade_hit_millions=row["trade_hit_millions"],
+                            trade_hit_millions=trade_hit,
                         )
                         st.plotly_chart(fig, use_container_width=True)
                     else:
                         st.warning("No stock history available for chart.")
 
-                    # Expandable sections
                     col_meth, col_hist = st.columns(2)
 
                     with col_meth:
                         with st.expander("Methodology"):
                             revenue = row["revenue_usd_bn"]
-                            trade_hit = row["trade_hit_millions"]
                             rev_impact = row["revenue_impact_pct"] * 100
                             st.markdown(
                                 f"""
@@ -229,49 +234,60 @@ if run_sim and exporters and selected_hardware:
                                 )
                             else:
                                 st.caption("No sufficiently similar historical event found in the dataset.")
+                else:
+                    st.info(f"**{company}** has no trade flow exposure to this shock. "
+                            "Its headquarters in {row['hq_country_code']} and domain ({row['primary_domain']}) "
+                            "are not directly linked to the disrupted trade routes or hardware types.")
 
     with tab_private:
-        if priv_impacts.empty:
-            st.info("No private companies directly affected by this shock.")
-        else:
-            st.subheader("Private Company Predicted Impact")
+        st.subheader("Private Company Predicted Impact")
 
-            for _, row in priv_impacts.iterrows():
-                company = row["company_name"]
-                hq_row = base_state["baseline_countries"][
-                    base_state["baseline_countries"]["country_code"] == row["hq_country_code"]
-                ]
-                geo_delta = 0.0
-                if not hq_row.empty:
-                    geo_delta = hq_row.iloc[0].get("geopolitical_risk_score", 0) * 0.1
+        for _, row in priv_impacts.iterrows():
+            company = row["company_name"]
+            trade_hit = row["trade_hit_millions"]
+            has_exposure = trade_hit > 0
 
-                prediction = predict_private_company_impact(
-                    company_name=company,
-                    domain=row["primary_domain"],
-                    revenue=row["revenue_usd_bn"],
-                    hq_country_code=row["hq_country_code"],
-                    trade_hit_millions=row["trade_hit_millions"],
-                    country_geo_risk_delta=geo_delta,
-                    company_exposure=derived["company_exposure"],
-                    stock_histories=stock_histories,
-                    sanctions=dfs["sanctions"],
-                )
+            with st.container(border=True):
+                header_cols = st.columns([2, 1, 1])
+                with header_cols[0]:
+                    st.markdown(f"### {company}")
+                    st.caption(f"Domain: {row['primary_domain']} | HQ: {row['hq_country_code']}")
+                with header_cols[1]:
+                    if has_exposure:
+                        hq_row = base_state["baseline_countries"][
+                            base_state["baseline_countries"]["country_code"] == row["hq_country_code"]
+                        ]
+                        geo_delta = 0.0
+                        if not hq_row.empty:
+                            geo_delta = hq_row.iloc[0].get("geopolitical_risk_score", 0) * 0.1
 
-                with st.container(border=True):
-                    header_cols = st.columns([2, 1, 1])
-                    with header_cols[0]:
-                        st.markdown(f"### {company}")
-                        st.caption(f"Domain: {row['primary_domain']} | HQ: {row['hq_country_code']}")
-                    with header_cols[1]:
+                        prediction = predict_private_company_impact(
+                            company_name=company,
+                            domain=row["primary_domain"],
+                            revenue=row["revenue_usd_bn"],
+                            hq_country_code=row["hq_country_code"],
+                            trade_hit_millions=trade_hit,
+                            country_geo_risk_delta=geo_delta,
+                            company_exposure=derived["company_exposure"],
+                            stock_histories=stock_histories,
+                            sanctions=dfs["sanctions"],
+                        )
+
                         st.metric(
                             label="Predicted Impact",
                             value=f"{prediction['predicted_impact_pct']:+.1f}%",
                             help="Rule-based prediction using comparable public companies. NOT market data.",
                         )
-                    with header_cols[2]:
+                    else:
+                        st.metric(label="Predicted Impact", value="No exposure")
+                with header_cols[2]:
+                    if has_exposure:
                         st.caption(f"Method: {prediction['method']}")
                         st.caption(f"Confidence: {prediction['confidence']}")
+                    else:
+                        st.caption("No trade exposure")
 
+                if has_exposure:
                     st.warning("⚠️ PREDICTED — NOT MARKET DATA")
 
                     with st.expander("How we predicted this"):
@@ -279,7 +295,7 @@ if run_sim and exporters and selected_hardware:
                             f"""
                             **Methodology:**
 
-                            1. **Trade Exposure:** ${row['trade_hit_millions']:,.0f}M in disrupted trade flows
+                            1. **Trade Exposure:** ${trade_hit:,.0f}M in disrupted trade flows
                             2. **Comparable Companies:** {', '.join(prediction['comparables_used']) if prediction['comparables_used'] else 'None found — used analytical fallback'}
                             3. **Scaling:** Adjusted by revenue ratio vs. comparables
                             4. **Geo-Risk Adjustment:** {geo_delta:+.2f} (based on HQ country trajectory)
@@ -299,6 +315,10 @@ if run_sim and exporters and selected_hardware:
                             - If historical private-company valuation rounds exist, we could correlate against those
                             """
                         )
+                else:
+                    st.info(f"**{company}** has no trade flow exposure to this shock. "
+                            "Its headquarters in {row['hq_country_code']} and domain ({row['primary_domain']}) "
+                            "are not directly linked to the disrupted trade routes or hardware types.")
 
 else:
     st.info("Configure a shock in the sidebar and click **Run Impact Analysis**.")

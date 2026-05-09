@@ -82,17 +82,25 @@ def build_derived_tables(dfs: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame
     )
 
     # --- Company Exposure: map companies to trade flows by domain / geography ---
-    # Create a simple mapping from primary_domain to hardware_type relevance
+    # Map from primary_domain to hardware_type relevance
     domain_hardware_map = {
-        "GPU/AI Accelerator": ["GPU_High_End", "AI_Accelerator", "Advanced_Logic_Chip"],
-        "CPU/Logic Chip": ["Advanced_Logic_Chip", "Consumer_Chip"],
-        "Memory/DRAM": ["DRAM"],
-        "Memory/NAND Flash": ["NAND_Flash"],
-        "Foundry/Contract Manufacturing": ["Advanced_Logic_Chip", "Consumer_Chip", "DRAM", "NAND_Flash"],
-        "Semiconductor Equipment": ["Advanced_DUV_Lithography"],
-        "Chemical Materials": ["Chemical_Materials"],
-        "Telecom Chip": ["Telecom_Chip", "5G_Baseband"],
-        "Surveillance Chip": ["Surveillance_Chip"],
+        "GPU/AI Accelerator":     ["GPU_High_End", "AI_Accelerator"],
+        "GPU/CPU":                ["GPU_High_End", "Advanced_Logic_Chip", "Consumer_Chip"],
+        "CPU/Foundry/AI":         ["Advanced_Logic_Chip", "Consumer_Chip", "AI_Accelerator"],
+        "Mobile/Edge AI":         ["Advanced_Logic_Chip", "Consumer_Chip", "Telecom_Chip"],
+        "Semiconductor Equipment":["Semiconductor_Equipment"],
+        "Process Control":        ["Semiconductor_Equipment", "EDA_Software"],
+        "Memory":                 ["DRAM", "NAND_Flash", "HBM_Memory"],
+        "Lithography":            ["EUV_Lithography_Machine", "DUV_Lithography_Machine"],
+        "Foundry":                ["Advanced_Logic_Chip", "Consumer_Chip", "DRAM", "NAND_Flash"],
+        "Mobile SoC":             ["Advanced_Logic_Chip", "Consumer_Chip", "Telecom_Chip"],
+        "Memory/Foundry":         ["DRAM", "NAND_Flash", "HBM_Memory", "Advanced_Logic_Chip", "Consumer_Chip"],
+        "Materials":              ["Chemical_Materials"],
+        "AI Chip/Telecom":        ["AI_Accelerator", "Telecom_Chip", "Surveillance_Chip"],
+        "AI Accelerator":         ["AI_Accelerator"],
+        "GPU/AI":                 ["GPU_High_End", "AI_Accelerator"],
+        "AI Infrastructure":      ["AI_Accelerator", "GPU_High_End"],
+        "Telecom/AI":             ["Telecom_Chip", "AI_Accelerator"],
     }
 
     exposure_rows = []

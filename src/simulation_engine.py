@@ -246,7 +246,7 @@ def run_simulation(
         )
 
     company_impacts_df = pd.DataFrame(company_impacts)
-    company_impacts_df = company_impacts_df[company_impacts_df["trade_hit_millions"] > 0]
+    # Keep all companies, including those with zero trade exposure
 
     # Trade impact detail table
     trade_impacts = trade[trade["is_disrupted"]].copy()

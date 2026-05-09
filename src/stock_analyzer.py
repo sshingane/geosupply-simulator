@@ -234,3 +234,88 @@ def predict_private_company_impact(
         "comparables_used": comps_used,
         "confidence": "LOW",
     }
+
+
+def _sanction_similarity_score(
+    sanction_row: pd.Series,
+    restriction_type: str,
+    target_countries: List[str],
+    hardware_types: List[str],
+) -> float:
+    """Compute a 0-100 similarity score between a historical sanction and current shock."""
+    score = 0.0
+
+    # Restriction type match (40 points)
+    if sanction_row.get("restriction_type") == restriction_type:
+        score += 40.0
+    elif restriction_type in str(sanction_row.get("restriction_type", "")):
+        score += 20.0
+
+    # Target country match (30 points)
+    target = sanction_row.get("target_country_code", "")
+    if target in target_countries:
+        score += 30.0
+    elif sanction_row.get("imposing_country_code") in target_countries:
+        score += 15.0
+
+    # Technology overlap (30 points)
+    affected_tech = str(sanction_row.get("affected_technology", ""))
+    tech_match = any(hw in affected_tech for hw in hardware_types)
+    if tech_match:
+        score += 30.0
+    elif any(hw.lower() in affected_tech.lower() for hw in hardware_types):
+        score += 15.0
+
+    return score
+
+
+def find_closest_historical_sanction(
+    sanctions: pd.DataFrame,
+    restriction_type: str,
+    target_countries: List[str],
+    hardware_types: List[str],
+    company_name: str,
+    stock_histories: Dict[str, pd.DataFrame],
+    min_similarity: float = 30.0,
+) -> Optional[Dict]:
+    """Find the closest real historical sanction and compute actual stock impact."""
+    real_sanctions = sanctions[sanctions["is_synthetic"] == 0].copy()
+    if real_sanctions.empty:
+        return None
+
+    # Score each sanction
+    real_sanctions["similarity_score"] = real_sanctions.apply(
+        lambda row: _sanction_similarity_score(row, restriction_type, target_countries, hardware_types),
+        axis=1,
+    )
+
+    best = real_sanctions.nlargest(1, "similarity_score").iloc[0]
+    if best["similarity_score"] < min_similarity:
+        return None
+
+    # Compute actual stock impact for this company
+    sanction_date = pd.to_datetime(best["date_implemented"])
+    stock_df = stock_histories.get(company_name)
+    actual_impact = compute_historical_sanction_impact(
+        company_name, sanction_date, stock_df, window_days=90
+    )
+
+    # Compute what our model would have estimated for this historical event
+    # Use severity as proxy
+    historical_severity = best.get("severity_level", 3)
+    historical_restriction = best.get("restriction_type", restriction_type)
+    # Simple analytical estimate
+    estimated_for_historical = -historical_severity * 2.5  # rough heuristic
+
+    return {
+        "date": best["date_implemented"],
+        "imposing_country": best.get("imposing_country", "Unknown"),
+        "target_country": best.get("target_country", "Unknown"),
+        "restriction_type": best.get("restriction_type", "Unknown"),
+        "affected_technology": best.get("affected_technology", "Unknown"),
+        "severity": historical_severity,
+        "similarity_score": best["similarity_score"],
+        "actual_impact_pct": actual_impact,
+        "estimated_for_historical_pct": estimated_for_historical,
+        "description": best.get("description", ""),
+    }

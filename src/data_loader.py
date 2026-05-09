@@ -138,6 +138,8 @@ def build_derived_tables(dfs: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame
         )
 
     company_exposure = pd.DataFrame(exposure_rows)
+    # Keep only the latest year per company for simulation purposes
+    company_exposure = company_exposure.sort_values("year").drop_duplicates("company_name", keep="last")
 
     return {
         "country_profiles": country_profiles,

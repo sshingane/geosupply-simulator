@@ -228,7 +228,7 @@ def run_simulation(
 
         if total_hit > 0 and revenue > 0:
             revenue_impact_pct = (total_hit / 1000) / revenue
-            stock_estimate = revenue_impact_pct * 4.0  # sector multiple ~4x
+            stock_estimate = revenue_impact_pct * 4.0 * 100  # sector multiple ~4x, convert to pct
         else:
             revenue_impact_pct = 0.0
             stock_estimate = 0.0

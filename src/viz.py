@@ -1,6 +1,7 @@
 """Reusable visualization builders for Plotly maps and charts."""
 from typing import List, Optional
 
+import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -235,4 +236,128 @@ def build_energy_time_series(df: pd.DataFrame, countries: Optional[List[str]] = 
         plot_bgcolor="rgba(0,0,0,0)",
         font_color="#FAFAFA",
     )
+    return fig
+
+
+def build_stock_projection_chart(
+    stock_df: pd.DataFrame,
+    estimated_impact_pct: float,
+    shock_date: pd.Timestamp,
+    company_name: str,
+    ticker: str,
+    trade_hit_millions: float,
+) -> go.Figure:
+    """Build a chart showing historical price + projected post-shock trajectory."""
+    if stock_df is None or stock_df.empty:
+        fig = go.Figure()
+        fig.update_layout(title="No stock data available")
+        return fig
+
+    date_col = "Date" if "Date" in stock_df.columns else "date"
+    stock_df = stock_df.copy()
+    stock_df[date_col] = pd.to_datetime(stock_df[date_col])
+    stock_df = stock_df.sort_values(date_col)
+
+    # Historical line (up to shock date)
+    historical = stock_df[stock_df[date_col] <= shock_date].copy()
+    latest_price = historical["Close"].iloc[-1] if not historical.empty else stock_df["Close"].iloc[-1]
+    latest_date = historical[date_col].iloc[-1] if not historical.empty else stock_df[date_col].iloc[-1]
+
+    # Projected trajectory: 90 days post-shock with exponential decay recovery
+    projection_days = 90
+    projected_dates = pd.date_range(
+        start=latest_date + pd.Timedelta(days=1),
+        periods=projection_days,
+        freq="D",
+    )
+
+    # Exponential decay curve: steepest drop in first 2 weeks, then gradual stabilization
+    # Model: price(t) = baseline * (1 + impact * (0.3 + 0.7 * exp(-t/30)))
+    # where impact is negative for a drop
+    # At t=0: price = baseline * (1 + impact)
+    # At t=30: price = baseline * (1 + impact * 0.3 + 0.7 * exp(-1)) ≈ baseline * (1 + impact * 0.56)
+    # At t=90: price = baseline * (1 + impact * 0.3 + 0.7 * exp(-3)) ≈ baseline * (1 + impact * 0.33)
+    t = np.arange(1, projection_days + 1)
+    decay_factor = 0.3 + 0.7 * np.exp(-t / 30.0)
+    projected_prices = latest_price * (1 + (estimated_impact_pct / 100) * decay_factor)
+
+    projected_df = pd.DataFrame({
+        date_col: projected_dates,
+        "Close": projected_prices,
+        "type": "projected",
+    })
+
+    historical["type"] = "historical"
+
+    fig = go.Figure()
+
+    # Historical line
+    fig.add_trace(
+        go.Scatter(
+            x=historical[date_col],
+            y=historical["Close"],
+            mode="lines",
+            name="Historical",
+            line=dict(color="#888888", width=2),
+            hovertemplate="%{x|%Y-%m-%d}<br>Price: $%{y:.2f}<extra>Historical</extra>",
+        )
+    )
+
+    # Projected line
+    fig.add_trace(
+        go.Scatter(
+            x=projected_df[date_col],
+            y=projected_df["Close"],
+            mode="lines",
+            name="Projected",
+            line=dict(color="#FF4444", width=2, dash="dash"),
+            hovertemplate="%{x|%Y-%m-%d}<br>Projected: $%{y:.2f}<extra>Projected</extra>",
+        )
+    )
+
+    # Shock date vertical line
+    fig.add_shape(
+        type="line",
+        x0=latest_date,
+        x1=latest_date,
+        y0=0,
+        y1=1,
+        yref="paper",
+        line=dict(color="#FFFFFF", width=1, dash="dot"),
+    )
+    fig.add_annotation(
+        x=latest_date,
+        y=1.0,
+        yref="paper",
+        text="Shock",
+        showarrow=False,
+        font=dict(color="#FFFFFF", size=10),
+        bgcolor="rgba(0,0,0,0.5)",
+    )
+
+    # Annotation for projected impact
+    target_price = projected_prices[-1]
+    fig.add_annotation(
+        x=projected_dates[-1],
+        y=target_price,
+        text=f"Est. 90-day: ${target_price:.2f} ({estimated_impact_pct:+.1f}%)",
+        showarrow=True,
+        arrowhead=2,
+        arrowcolor="#FF4444",
+        font=dict(color="#FF4444", size=12),
+        bgcolor="rgba(0,0,0,0.7)",
+    )
+
+    fig.update_layout(
+        title=f"{company_name} ({ticker}) — Historical & Projected",
+        xaxis_title="Date",
+        yaxis_title="Price (USD)",
+        hovermode="x unified",
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        margin={"l": 50, "r": 50, "t": 60, "b": 40},
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font_color="#FAFAFA",
+    )
+
     return fig

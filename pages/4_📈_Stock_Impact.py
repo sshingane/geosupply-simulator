@@ -212,6 +212,8 @@ if run_sim and exporters and selected_hardware:
                                 sim_score = closest["similarity_score"]
                                 actual = closest["actual_impact_pct"]
                                 estimated_historical = closest["estimated_for_historical_pct"]
+                                actual_str = f"{actual:+.1f}%" if actual is not None else "N/A"
+                                est_str = f"{estimated_historical:+.1f}%"
                                 st.markdown(
                                     f"""
                                     **Closest Historical Event** (🔍 {sim_score:.0f}% match)
@@ -219,8 +221,8 @@ if run_sim and exporters and selected_hardware:
                                     - **Date:** {closest['date']}
                                     - **Event:** {closest['imposing_country']} imposed {closest['restriction_type'].replace('_', ' ')} on {closest['target_country']}
                                     - **Technology:** {closest['affected_technology']}
-                                    - **Actual 90-day stock move:** {actual:+.1f}% if actual else "N/A"}%
-                                    - **Our model would have estimated:** {estimated_historical:+.1f}%
+                                    - **Actual 90-day stock move:** {actual_str}
+                                    - **Our model would have estimated:** {est_str}
 
                                     *This event is the most similar real-world sanction in our dataset.*
                                     """

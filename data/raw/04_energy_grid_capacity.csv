@@ -1,0 +1,133 @@
+energy_id,country_code,country,region,year,total_grid_capacity_gw,ai_datacenter_energy_twh,pct_grid_used_by_ai,renewable_energy_pct,non_renewable_energy_pct,coal_pct,natural_gas_pct,nuclear_pct,solar_wind_pct,hydro_pct,energy_constraint_level,planned_expansion_gw,ai_grid_stress_index,carbon_intensity_gco2_per_kwh,geopolitical_risk_score,data_source,is_synthetic
+EN0001,US,United States,North America,2015,1082.0,53.03,0.56,14.3,85.7,25.9,40.0,19.2,12.4,2.6,Low,204.0,0.17,537.4,3.09,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0002,US,United States,North America,2016,1104.4,87.28,0.9,15.3,84.7,24.9,40.1,19.2,11.9,3.4,Low,206.6,0.27,520.4,3.34,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0003,US,United States,North America,2017,1107.1,111.66,1.15,16.1,83.9,25.3,40.3,19.0,11.7,2.7,Low,205.4,0.34,557.7,3.25,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0004,US,United States,North America,2018,1165.4,154.59,1.51,17.0,83.0,24.6,40.4,19.0,12.0,3.5,Low,204.8,0.45,490.3,3.23,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0005,US,United States,North America,2019,1201.8,174.54,1.66,18.4,81.6,24.3,39.8,19.3,13.3,2.6,Low,148.7,0.5,461.5,3.23,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0006,US,United States,North America,2020,1205.6,208.48,1.97,19.7,80.3,24.4,39.5,19.1,14.4,3.0,Low,168.2,0.59,513.5,3.46,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0007,US,United States,North America,2021,1202.7,246.21,2.34,20.6,79.4,22.8,40.1,18.8,13.7,3.0,Low,144.2,0.7,487.2,3.26,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0008,US,United States,North America,2022,1191.0,295.33,2.83,22.2,77.8,22.7,40.1,18.8,15.0,2.9,Moderate,163.4,1.15,508.6,3.33,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0009,US,United States,North America,2023,1210.6,326.8,3.08,23.0,77.0,22.9,39.9,19.0,15.4,2.9,Moderate,180.0,1.22,487.8,3.56,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0010,US,United States,North America,2024,1278.0,341.55,3.05,23.8,76.2,22.3,40.1,19.0,16.8,3.2,Moderate,208.7,1.21,501.1,3.7,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0011,US,United States,North America,2025,1290.4,404.66,3.58,24.5,75.5,21.3,40.2,19.5,16.3,2.7,Moderate,181.6,1.37,491.7,3.56,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0012,CN,China,Asia-Pacific,2015,1468.7,26.66,0.21,12.3,87.7,61.4,3.7,4.9,19.3,8.6,Moderate,662.9,0.36,524.0,7.51,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0013,CN,China,Asia-Pacific,2016,1676.9,63.01,0.43,14.7,85.3,61.8,4.0,4.9,20.0,8.8,Moderate,629.4,0.43,483.6,7.44,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0014,CN,China,Asia-Pacific,2017,1795.5,102.57,0.65,16.7,83.3,61.2,3.9,4.6,21.3,9.1,Moderate,507.8,0.49,517.6,7.4,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0015,CN,China,Asia-Pacific,2018,1952.1,154.78,0.91,19.2,80.8,61.2,3.4,5.4,20.7,9.4,Moderate,497.2,0.57,502.6,7.43,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0016,CN,China,Asia-Pacific,2019,2156.8,202.41,1.07,21.4,78.6,59.4,4.2,5.0,20.9,9.5,Moderate,695.3,0.62,472.5,7.59,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0017,CN,China,Asia-Pacific,2020,2348.9,246.66,1.2,24.1,75.9,59.7,4.6,5.0,21.8,9.4,Moderate,602.5,0.66,476.4,7.81,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0018,CN,China,Asia-Pacific,2021,2523.3,273.13,1.24,26.5,73.5,60.0,4.7,4.8,22.6,9.5,Moderate,556.5,0.67,435.8,7.94,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0019,CN,China,Asia-Pacific,2022,2726.5,307.13,1.29,28.8,71.2,60.3,4.1,5.3,23.7,9.2,Moderate,490.6,0.69,424.8,7.99,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0020,CN,China,Asia-Pacific,2023,2843.8,355.09,1.43,30.2,69.8,58.5,3.1,5.0,23.0,9.3,Moderate,481.9,0.73,479.8,8.44,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0021,CN,China,Asia-Pacific,2024,3155.4,420.83,1.52,33.6,66.4,58.0,5.0,5.3,24.5,8.9,Moderate,611.0,0.76,445.3,8.52,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0022,CN,China,Asia-Pacific,2025,3340.6,423.69,1.45,34.7,65.3,58.1,3.5,4.7,23.8,8.9,Moderate,598.4,0.73,389.2,8.79,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0023,DE,Germany,Europe,2015,193.0,5.16,0.31,29.4,70.6,32.0,15.1,0.5,45.0,8.1,Low,45.6,0.09,421.8,2.25,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0024,DE,Germany,Europe,2016,195.7,7.83,0.46,31.5,68.5,31.9,14.5,0.1,45.8,7.8,Low,35.5,0.14,407.7,2.29,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0025,DE,Germany,Europe,2017,191.8,10.93,0.65,34.3,65.7,30.7,15.4,0.4,46.1,8.0,Low,33.6,0.2,446.5,2.36,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0026,DE,Germany,Europe,2018,195.5,15.61,0.91,36.2,63.8,30.1,15.7,0.4,45.7,7.9,Low,41.3,0.27,438.6,2.27,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0027,DE,Germany,Europe,2019,205.1,19.35,1.08,38.2,61.8,31.2,15.9,-0.2,47.0,7.7,Low,43.8,0.32,433.3,2.32,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0028,DE,Germany,Europe,2020,210.2,22.44,1.22,40.7,59.3,29.3,14.2,0.1,48.0,8.3,Low,39.0,0.37,399.4,2.33,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0029,DE,Germany,Europe,2021,206.7,24.74,1.37,43.1,56.9,29.6,15.9,0.1,47.7,7.6,Low,47.9,0.41,405.5,2.51,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0030,DE,Germany,Europe,2022,213.4,28.11,1.5,45.5,54.5,28.7,15.4,0.4,47.3,7.6,High,43.8,1.45,355.6,2.44,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0031,DE,Germany,Europe,2023,220.6,30.62,1.58,48.5,51.5,29.0,15.7,0.3,49.2,7.5,High,35.9,1.47,328.2,2.38,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0032,DE,Germany,Europe,2024,226.7,34.54,1.74,50.8,49.2,28.3,14.7,0.4,48.9,8.3,Moderate,35.8,0.82,377.1,2.42,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0033,DE,Germany,Europe,2025,228.5,35.82,1.79,52.0,48.0,29.0,15.8,-0.5,49.1,7.9,Moderate,34.8,0.84,355.6,2.31,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0034,FR,France,Europe,2015,128.8,4.09,0.36,20.0,80.0,5.3,10.9,68.6,9.9,5.7,Low,19.3,0.11,453.3,2.69,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0035,FR,France,Europe,2016,131.1,6.26,0.55,21.3,78.7,4.9,10.9,69.1,9.5,5.8,Low,18.6,0.17,476.4,2.85,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0036,FR,France,Europe,2017,135.2,8.66,0.73,21.1,78.9,3.0,9.4,68.6,11.1,5.6,Low,21.8,0.22,483.2,2.67,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0037,FR,France,Europe,2018,140.1,11.32,0.92,22.0,78.0,4.5,9.1,68.7,11.5,6.2,Low,18.3,0.28,447.1,2.91,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0038,FR,France,Europe,2019,138.4,13.02,1.07,23.2,76.8,4.2,9.1,69.3,11.6,5.9,Low,22.0,0.32,529.1,2.72,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0039,FR,France,Europe,2020,139.5,16.92,1.38,24.2,75.8,2.9,10.1,69.2,12.5,6.4,Low,19.4,0.41,459.2,2.84,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0040,FR,France,Europe,2021,144.3,18.64,1.47,24.7,75.3,1.9,9.9,69.2,13.1,6.0,Low,17.3,0.44,468.4,2.89,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0041,FR,France,Europe,2022,146.7,21.37,1.66,25.6,74.4,1.8,10.6,68.6,13.0,5.7,Moderate,16.5,0.8,472.3,2.8,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0042,FR,France,Europe,2023,151.9,23.99,1.8,26.8,73.2,1.8,10.3,69.1,13.3,6.1,Moderate,23.6,0.84,437.4,2.92,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0043,FR,France,Europe,2024,148.4,24.91,1.92,26.9,73.1,1.9,9.3,69.4,14.7,6.2,Low,19.7,0.58,505.8,2.9,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0044,FR,France,Europe,2025,155.0,28.79,2.12,28.1,71.9,1.4,9.7,69.0,13.7,5.9,Low,21.6,0.64,501.2,2.94,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0045,NL,Netherlands,Europe,2015,28.1,2.03,0.82,13.7,86.3,14.2,41.1,3.8,33.8,0.8,Low,6.6,0.25,566.8,2.04,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0046,NL,Netherlands,Europe,2016,28.2,3.01,1.22,16.2,83.8,12.8,42.5,3.8,34.6,0.7,Low,8.0,0.37,538.5,2.15,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0047,NL,Netherlands,Europe,2017,30.2,4.66,1.76,18.5,81.5,13.1,42.8,3.6,33.6,0.7,Low,8.4,0.53,483.1,2.01,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0048,NL,Netherlands,Europe,2018,30.9,5.69,2.1,20.9,79.1,12.3,42.2,4.4,35.3,1.3,Low,7.6,0.63,472.9,2.09,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0049,NL,Netherlands,Europe,2019,32.6,6.76,2.37,24.1,75.9,13.3,41.1,3.5,34.8,0.9,Low,6.8,0.71,515.0,1.96,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0050,NL,Netherlands,Europe,2020,32.6,7.65,2.68,26.7,73.3,12.3,42.8,4.5,36.0,0.7,Low,7.0,0.8,440.6,2.16,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0051,NL,Netherlands,Europe,2021,33.1,8.62,2.97,28.6,71.4,12.0,42.3,3.9,37.1,1.0,Low,6.7,0.89,484.2,2.24,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0052,NL,Netherlands,Europe,2022,34.1,10.24,3.43,30.8,69.2,10.6,42.7,3.8,37.6,1.2,Moderate,8.3,1.33,418.5,2.02,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0053,NL,Netherlands,Europe,2023,35.0,11.18,3.65,32.9,67.1,11.6,41.7,4.3,37.4,1.3,Moderate,9.5,1.4,412.8,2.21,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0054,NL,Netherlands,Europe,2024,37.3,13.37,4.09,35.9,64.1,10.4,41.5,3.6,38.1,1.5,Moderate,8.8,1.53,406.0,2.2,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0055,NL,Netherlands,Europe,2025,38.6,13.57,4.01,36.9,63.1,9.4,42.8,4.3,38.1,0.8,Moderate,8.9,1.5,451.9,2.18,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0056,JP,Japan,Asia-Pacific,2015,301.9,9.64,0.36,12.0,88.0,33.3,35.6,7.9,10.2,12.9,Moderate,50.8,0.41,522.0,3.08,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0057,JP,Japan,Asia-Pacific,2016,308.1,14.57,0.54,13.3,86.7,33.5,35.0,8.3,10.7,13.0,Moderate,52.7,0.46,487.1,2.98,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0058,JP,Japan,Asia-Pacific,2017,313.8,20.57,0.75,14.0,86.0,32.7,34.8,8.3,10.7,13.5,Moderate,50.2,0.52,506.0,3.03,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0059,JP,Japan,Asia-Pacific,2018,314.9,27.77,1.01,14.6,85.4,32.2,35.8,8.1,10.5,12.7,Low,51.5,0.3,568.5,3.03,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0060,JP,Japan,Asia-Pacific,2019,322.5,33.5,1.19,16.3,83.7,33.0,35.0,8.4,11.2,12.7,Low,48.8,0.36,522.6,3.21,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0061,JP,Japan,Asia-Pacific,2020,321.7,39.3,1.39,16.8,83.2,32.3,34.1,8.1,12.4,12.9,Low,39.9,0.42,519.9,3.2,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0062,JP,Japan,Asia-Pacific,2021,332.4,41.51,1.43,17.8,82.2,32.5,34.7,7.5,13.1,13.2,Low,38.3,0.43,560.6,3.13,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0063,JP,Japan,Asia-Pacific,2022,342.0,47.7,1.59,19.5,80.5,30.8,34.6,7.6,13.5,13.1,Moderate,47.0,0.78,474.2,3.15,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0064,JP,Japan,Asia-Pacific,2023,353.5,52.93,1.71,20.4,79.6,30.6,35.5,7.5,13.6,13.5,Moderate,53.7,0.81,476.3,3.08,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0065,JP,Japan,Asia-Pacific,2024,344.7,62.61,2.07,21.1,78.9,30.4,34.2,8.4,14.1,12.8,Low,42.3,0.62,471.8,3.13,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0066,JP,Japan,Asia-Pacific,2025,369.3,68.25,2.11,21.9,78.1,30.9,34.8,7.8,15.5,12.8,Low,41.8,0.63,538.5,2.99,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0067,KR,South Korea,Asia-Pacific,2015,116.8,8.49,0.83,5.0,95.0,36.8,27.8,25.6,4.3,3.3,Low,19.5,0.25,567.2,4.92,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0068,KR,South Korea,Asia-Pacific,2016,118.1,13.33,1.29,6.2,93.8,38.0,28.1,25.8,4.6,2.9,Low,21.0,0.39,538.4,5.03,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0069,KR,South Korea,Asia-Pacific,2017,120.5,18.42,1.75,7.4,92.6,36.7,27.0,25.8,6.2,2.5,Low,19.5,0.53,519.9,4.88,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0070,KR,South Korea,Asia-Pacific,2018,125.0,22.48,2.05,9.0,91.0,36.4,28.9,26.2,5.8,2.9,Low,23.3,0.61,563.5,4.96,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0071,KR,South Korea,Asia-Pacific,2019,124.4,25.76,2.36,10.3,89.7,36.6,28.0,26.1,5.9,3.3,Low,23.6,0.71,591.4,4.85,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0072,KR,South Korea,Asia-Pacific,2020,126.8,32.86,2.96,11.6,88.4,36.1,28.9,26.0,7.0,2.5,Low,16.6,0.89,488.6,5.02,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0073,KR,South Korea,Asia-Pacific,2021,129.3,36.04,3.18,13.1,86.9,35.8,28.2,25.8,8.2,2.7,Low,16.4,0.95,501.5,4.83,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0074,KR,South Korea,Asia-Pacific,2022,130.8,41.88,3.66,13.9,86.1,35.7,27.2,25.6,8.0,3.4,Low,22.9,1.1,580.2,4.95,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0075,KR,South Korea,Asia-Pacific,2023,136.4,46.4,3.88,15.5,84.5,34.3,28.1,25.9,8.4,3.0,Low,17.0,1.16,507.8,4.77,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0076,KR,South Korea,Asia-Pacific,2024,141.5,47.61,3.84,16.5,83.5,35.4,28.0,25.6,8.8,2.6,Moderate,17.6,1.45,471.1,4.88,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0077,KR,South Korea,Asia-Pacific,2025,142.6,55.66,4.46,18.1,81.9,33.6,27.7,26.3,8.7,3.4,Moderate,19.9,1.64,543.9,4.85,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0078,TW,Taiwan,Asia-Pacific,2015,47.5,5.18,1.24,8.1,91.9,41.3,36.9,7.6,8.6,4.1,Low,19.6,0.37,611.1,8.17,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0079,TW,Taiwan,Asia-Pacific,2016,48.6,8.83,2.07,9.3,90.7,41.3,36.0,7.6,10.0,3.9,Low,19.5,0.62,569.6,8.11,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0080,TW,Taiwan,Asia-Pacific,2017,51.1,11.97,2.67,10.6,89.4,41.3,37.0,8.2,10.7,3.9,Low,16.7,0.8,592.0,8.34,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0081,TW,Taiwan,Asia-Pacific,2018,54.0,15.63,3.3,12.4,87.6,40.0,36.5,8.3,10.2,4.5,Moderate,21.5,1.29,585.0,8.2,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0082,TW,Taiwan,Asia-Pacific,2019,55.1,20.03,4.15,13.5,86.5,39.8,35.8,8.2,10.6,3.8,Moderate,14.5,1.55,559.1,8.24,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0083,TW,Taiwan,Asia-Pacific,2020,56.5,25.03,5.06,14.6,85.4,40.2,36.6,8.3,11.1,4.4,Moderate,21.0,1.82,533.5,8.19,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0084,TW,Taiwan,Asia-Pacific,2021,58.4,27.44,5.36,16.3,83.7,40.1,35.8,8.2,11.7,3.6,Moderate,15.4,1.91,471.4,8.46,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0085,TW,Taiwan,Asia-Pacific,2022,63.1,31.38,5.68,17.9,82.1,39.7,35.7,7.9,12.6,4.2,Moderate,15.6,2.0,460.8,8.73,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0086,TW,Taiwan,Asia-Pacific,2023,65.7,35.13,6.1,19.5,80.5,39.3,36.0,8.2,14.1,3.7,Moderate,16.8,2.13,474.7,8.94,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0087,TW,Taiwan,Asia-Pacific,2024,67.5,37.47,6.34,20.4,79.6,39.3,36.0,8.0,14.7,4.0,Moderate,19.3,2.2,456.7,9.1,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0088,TW,Taiwan,Asia-Pacific,2025,67.6,41.97,7.09,22.6,77.4,39.1,36.7,7.8,15.4,4.2,Moderate,17.2,2.43,506.6,9.3,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0089,IN,India,South Asia,2015,342.6,5.23,0.17,12.1,87.9,49.5,8.0,3.4,30.8,7.9,High,381.7,1.05,517.2,5.14,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0090,IN,India,South Asia,2016,411.4,11.95,0.33,15.0,85.0,50.2,8.2,3.2,30.8,7.5,High,527.6,1.1,572.2,5.13,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0091,IN,India,South Asia,2017,488.7,19.84,0.46,18.2,81.8,49.7,8.2,2.6,31.3,8.5,High,423.2,1.14,546.4,4.88,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0092,IN,India,South Asia,2018,533.6,25.46,0.54,20.4,79.6,47.9,7.4,3.3,31.1,7.8,Moderate,361.8,0.46,517.5,5.04,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0093,IN,India,South Asia,2019,607.2,32.42,0.61,23.6,76.4,48.8,8.6,2.6,32.5,7.7,Moderate,390.3,0.48,504.6,5.01,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0094,IN,India,South Asia,2020,653.7,38.94,0.68,27.8,72.2,48.7,8.8,3.0,33.2,7.9,Moderate,374.0,0.5,451.9,5.03,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0095,IN,India,South Asia,2021,718.7,49.29,0.78,29.4,70.6,47.3,7.2,2.9,32.6,7.8,Moderate,432.1,0.53,451.0,5.01,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0096,IN,India,South Asia,2022,780.3,54.17,0.79,33.0,67.0,46.9,8.7,3.0,33.7,8.4,Moderate,512.1,0.54,477.0,5.06,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0097,IN,India,South Asia,2023,847.8,59.13,0.8,36.4,63.6,48.0,8.3,3.4,34.2,7.9,Moderate,523.1,0.54,439.5,5.14,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0098,IN,India,South Asia,2024,932.1,67.51,0.83,39.1,60.9,47.4,8.1,2.8,34.9,8.0,Moderate,377.4,0.55,424.2,4.88,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0099,IN,India,South Asia,2025,974.4,78.2,0.92,41.9,58.1,46.9,7.7,3.5,34.9,7.5,Moderate,517.0,0.58,410.2,4.92,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0100,AE,United Arab Emirates,Middle East,2015,28.8,2.0,0.79,2.1,97.9,1.8,71.9,13.9,10.2,1.0,Low,14.7,0.24,534.9,4.23,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0101,AE,United Arab Emirates,Middle East,2016,29.2,4.52,1.77,3.6,96.4,1.9,72.9,14.1,12.0,0.8,Low,13.1,0.53,570.7,4.29,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0102,AE,United Arab Emirates,Middle East,2017,32.1,6.66,2.37,5.1,94.9,1.5,72.0,13.7,11.7,1.4,Low,17.1,0.71,584.5,4.26,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0103,AE,United Arab Emirates,Middle East,2018,32.3,8.86,3.13,6.9,93.1,0.4,71.5,14.4,12.6,1.1,Low,12.8,0.94,525.3,4.18,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0104,AE,United Arab Emirates,Middle East,2019,35.0,10.6,3.46,8.6,91.4,1.3,71.7,14.0,12.9,1.4,Low,17.4,1.04,507.7,4.2,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0105,AE,United Arab Emirates,Middle East,2020,37.1,13.86,4.26,9.8,90.2,0.0,72.6,13.7,13.7,0.6,Low,16.7,1.28,563.8,4.24,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0106,AE,United Arab Emirates,Middle East,2021,38.7,16.42,4.84,11.9,88.1,-0.3,72.4,14.1,13.6,1.4,Low,12.0,1.45,516.9,4.31,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0107,AE,United Arab Emirates,Middle East,2022,39.1,19.13,5.59,13.3,86.7,-0.0,72.6,14.0,14.1,0.5,Low,14.2,1.68,495.0,4.36,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0108,AE,United Arab Emirates,Middle East,2023,41.5,19.83,5.45,14.8,85.2,-0.6,72.9,13.6,15.2,1.0,Low,15.7,1.64,505.2,4.44,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0109,AE,United Arab Emirates,Middle East,2024,42.7,22.98,6.14,16.9,83.1,0.8,72.1,14.5,15.4,0.7,Low,14.4,1.84,498.4,4.25,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0110,AE,United Arab Emirates,Middle East,2025,45.7,25.29,6.32,17.5,82.5,0.8,71.6,14.5,16.4,1.4,Low,16.9,1.9,483.9,4.31,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0111,SA,Saudi Arabia,Middle East,2015,70.8,1.93,0.31,0.5,99.5,0.9,70.9,0.4,19.3,0.0,Low,49.3,0.09,643.2,5.26,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0112,SA,Saudi Arabia,Middle East,2016,74.3,4.76,0.73,1.6,98.4,2.3,69.4,-0.4,20.8,0.4,Low,57.4,0.22,593.3,5.25,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0113,SA,Saudi Arabia,Middle East,2017,78.9,7.14,1.03,2.8,97.2,0.0,69.6,0.4,20.1,0.4,Low,45.0,0.31,564.3,5.24,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0114,SA,Saudi Arabia,Middle East,2018,83.2,10.4,1.43,4.0,96.0,-0.2,70.8,-0.3,21.8,-0.1,Low,56.7,0.43,599.9,5.1,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0115,SA,Saudi Arabia,Middle East,2019,87.3,12.73,1.66,5.0,95.0,0.9,69.2,-0.3,21.5,0.3,Low,42.9,0.5,580.5,5.26,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0116,SA,Saudi Arabia,Middle East,2020,90.4,16.98,2.14,6.4,93.6,0.3,69.9,-0.4,22.4,0.5,Low,54.7,0.64,513.1,5.2,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0117,SA,Saudi Arabia,Middle East,2021,92.4,19.3,2.38,7.5,92.5,0.1,69.4,0.4,22.9,-0.3,Low,46.4,0.71,610.0,5.32,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0118,SA,Saudi Arabia,Middle East,2022,94.6,20.2,2.44,8.3,91.7,-0.4,70.3,0.1,23.3,0.2,Low,40.4,0.73,514.4,5.16,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0119,SA,Saudi Arabia,Middle East,2023,96.4,22.95,2.72,9.8,90.2,0.6,70.5,0.3,23.8,0.2,Low,45.4,0.82,605.3,5.1,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0120,SA,Saudi Arabia,Middle East,2024,100.0,26.4,3.01,11.2,88.8,1.0,70.6,0.1,24.0,0.5,Low,53.9,0.9,592.4,5.14,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0121,SA,Saudi Arabia,Middle East,2025,104.0,31.49,3.46,11.7,88.3,0.9,70.0,0.4,24.2,0.2,Low,49.7,1.04,555.2,5.2,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0122,PK,Pakistan,South Asia,2015,30.8,0.21,0.08,7.9,92.1,27.6,32.6,8.9,12.7,17.4,High,18.3,1.02,533.5,7.93,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0123,PK,Pakistan,South Asia,2016,32.4,0.36,0.13,9.6,90.4,27.2,32.2,9.3,14.1,17.2,High,19.9,1.04,573.8,7.66,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0124,PK,Pakistan,South Asia,2017,34.1,0.52,0.17,10.8,89.2,25.4,33.6,8.8,14.4,16.9,High,22.2,1.05,543.9,7.89,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0125,PK,Pakistan,South Asia,2018,34.5,0.71,0.23,12.2,87.8,26.6,32.1,8.5,14.3,17.1,High,19.2,1.07,574.1,7.67,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0126,PK,Pakistan,South Asia,2019,36.5,0.89,0.28,13.7,86.3,25.8,32.2,9.4,15.2,17.2,High,20.2,1.08,502.0,7.9,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0127,PK,Pakistan,South Asia,2020,39.7,1.08,0.31,15.1,84.9,24.5,33.4,8.8,16.7,16.7,High,16.1,1.09,500.2,7.71,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0128,PK,Pakistan,South Asia,2021,40.8,1.23,0.34,16.7,83.3,24.1,33.4,9.1,17.5,17.5,High,23.0,1.1,543.4,7.77,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0129,PK,Pakistan,South Asia,2022,43.2,1.55,0.41,17.3,82.7,24.4,32.4,9.1,16.9,17.1,Severe,20.4,2.12,560.8,7.82,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0130,PK,Pakistan,South Asia,2023,45.3,1.6,0.4,19.1,80.9,23.8,32.6,8.9,17.7,17.1,Severe,21.1,2.12,489.5,7.86,IEA/National Grid Operators/World Bank/Synthetic,0
+EN0131,PK,Pakistan,South Asia,2024,46.5,1.73,0.42,20.3,79.7,22.7,32.1,8.7,17.0,16.7,High,21.2,1.13,454.7,8.02,IEA/National Grid Operators/World Bank/Synthetic,1
+EN0132,PK,Pakistan,South Asia,2025,49.2,2.08,0.48,21.7,78.3,24.0,32.7,8.6,19.5,17.4,High,19.7,1.14,507.9,8.21,IEA/National Grid Operators/World Bank/Synthetic,1

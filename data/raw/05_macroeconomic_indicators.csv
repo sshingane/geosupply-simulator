@@ -1,0 +1,133 @@
+macro_id,country_code,country,region,alliance_bloc,year,gdp_usd_bn,gdp_growth_rate_pct,inflation_rate_pct,trade_balance_usd_bn,currency_strength_index,tech_sector_pct_gdp,ai_investment_gdp_ratio_pct,dedollarization_index,foreign_reserves_usd_bn,semiconductor_exports_usd_bn,unemployment_rate_pct,geopolitical_risk_score,ai_sovereignty_index,data_source,is_synthetic
+MA0001,US,United States,North America,Western Alliance,2015,17925.8,1.0,0.1,-520.58,99.02,6.61,0.0446,1.95,1033.5,22.61,5.36,3.07,87.92,IMF/World Bank/National Statistics/Industry,0
+MA0002,US,United States,North America,Western Alliance,2016,18746.4,-0.0,1.25,-528.51,100.04,6.66,0.064,2.0,1921.5,22.52,5.12,3.07,88.21,IMF/World Bank/National Statistics/Industry,0
+MA0003,US,United States,North America,Western Alliance,2017,19382.6,2.67,2.16,-533.11,100.25,7.16,0.0929,1.97,1107.1,29.52,6.12,3.3,89.24,IMF/World Bank/National Statistics/Industry,0
+MA0004,US,United States,North America,Western Alliance,2018,20700.8,1.09,2.46,-648.84,99.03,7.77,0.1208,2.02,1490.4,28.8,6.85,3.23,89.76,IMF/World Bank/National Statistics/Industry,0
+MA0005,US,United States,North America,Western Alliance,2019,21227.5,5.37,1.72,-556.29,100.15,8.15,0.1602,2.02,860.3,34.81,6.87,3.19,91.0,IMF/World Bank/National Statistics/Industry,0
+MA0006,US,United States,North America,Western Alliance,2020,21072.0,4.65,1.22,-659.27,100.07,8.53,0.2278,2.02,2093.5,29.26,2.09,3.19,91.74,IMF/World Bank/National Statistics/Industry,0
+MA0007,US,United States,North America,Western Alliance,2021,22828.8,4.17,4.62,-857.33,99.43,9.2,0.2716,2.01,1986.7,37.21,2.4,3.28,92.69,IMF/World Bank/National Statistics/Industry,0
+MA0008,US,United States,North America,Western Alliance,2022,25577.9,-0.13,8.16,-936.7,99.61,9.3,0.3323,2.04,186.5,39.34,3.36,3.34,92.91,IMF/World Bank/National Statistics/Industry,0
+MA0009,US,United States,North America,Western Alliance,2023,26685.8,1.76,4.28,-758.35,99.72,9.98,0.4497,2.01,1709.0,42.99,6.33,3.58,93.82,IMF/World Bank/National Statistics/Industry,0
+MA0010,US,United States,North America,Western Alliance,2024,28363.7,-0.34,2.93,-829.05,100.17,10.32,0.5112,1.95,1486.0,55.52,2.66,3.42,94.21,IMF/World Bank/National Statistics/Industry,1
+MA0011,US,United States,North America,Western Alliance,2025,30049.6,4.8,2.47,-829.06,99.22,11.12,0.599,2.06,1907.0,65.0,3.34,3.7,95.35,IMF/World Bank/National Statistics/Industry,1
+MA0012,CN,China,Asia-Pacific,Non-Aligned/SCO,2015,11104.5,3.88,1.46,590.08,94.3,3.91,0.054,35.31,13581.1,14.7,4.83,7.49,70.23,IMF/World Bank/National Statistics/Industry,0
+MA0013,CN,China,Asia-Pacific,Non-Aligned/SCO,2016,11167.1,7.17,1.9,505.94,94.81,4.59,0.0806,35.76,1129.1,17.6,3.75,7.53,72.04,IMF/World Bank/National Statistics/Industry,0
+MA0014,CN,China,Asia-Pacific,Non-Aligned/SCO,2017,12231.4,3.39,1.55,432.13,96.04,4.89,0.1226,38.09,8028.8,18.61,3.12,7.33,73.21,IMF/World Bank/National Statistics/Industry,0
+MA0015,CN,China,Asia-Pacific,Non-Aligned/SCO,2018,14027.2,2.93,2.07,367.21,98.74,5.47,0.1568,42.5,3365.4,23.35,5.88,7.41,74.8,IMF/World Bank/National Statistics/Industry,0
+MA0016,CN,China,Asia-Pacific,Non-Aligned/SCO,2019,14253.3,6.75,2.93,427.4,96.08,6.02,0.2105,45.26,6859.9,22.6,2.74,7.64,76.51,IMF/World Bank/National Statistics/Industry,0
+MA0017,CN,China,Asia-Pacific,Non-Aligned/SCO,2020,14789.6,4.22,2.6,535.75,97.79,6.34,0.1488,47.3,28737.6,22.58,2.98,7.67,78.31,IMF/World Bank/National Statistics/Industry,0
+MA0018,CN,China,Asia-Pacific,Non-Aligned/SCO,2021,17654.4,4.48,0.89,671.52,97.83,7.0,0.1586,52.98,24723.1,28.26,1.96,8.03,79.22,IMF/World Bank/National Statistics/Industry,0
+MA0019,CN,China,Asia-Pacific,Non-Aligned/SCO,2022,17828.2,9.11,2.06,881.6,94.7,7.41,0.1963,58.39,18696.6,31.39,2.54,8.02,81.46,IMF/World Bank/National Statistics/Industry,0
+MA0020,CN,China,Asia-Pacific,Non-Aligned/SCO,2023,17645.1,3.01,0.2,811.37,94.87,7.59,0.255,62.11,29091.1,36.02,3.8,8.42,82.7,IMF/World Bank/National Statistics/Industry,0
+MA0021,CN,China,Asia-Pacific,Non-Aligned/SCO,2024,18400.3,3.75,0.51,800.09,95.3,7.89,0.3261,63.14,2378.0,38.92,2.36,8.52,84.45,IMF/World Bank/National Statistics/Industry,1
+MA0022,CN,China,Asia-Pacific,Non-Aligned/SCO,2025,19533.4,4.27,1.01,847.02,95.95,8.16,0.3993,68.23,6448.1,45.6,5.72,8.57,85.76,IMF/World Bank/National Statistics/Industry,1
+MA0023,DE,Germany,Europe,Western Alliance,2015,3347.3,5.03,0.1,238.11,108.81,3.81,0.0358,14.85,1084.4,5.75,3.55,2.35,58.05,IMF/World Bank/National Statistics/Industry,0
+MA0024,DE,Germany,Europe,Western Alliance,2016,3498.0,4.56,0.49,267.77,109.74,3.8,0.0429,14.62,1704.0,6.99,2.45,2.47,58.65,IMF/World Bank/National Statistics/Industry,0
+MA0025,DE,Germany,Europe,Western Alliance,2017,3724.3,0.77,1.54,238.63,112.15,4.01,0.0537,14.9,2546.1,6.85,3.84,2.32,59.24,IMF/World Bank/National Statistics/Industry,0
+MA0026,DE,Germany,Europe,Western Alliance,2018,3933.7,5.74,1.76,245.92,115.19,4.23,0.0712,14.56,2556.1,8.77,3.89,2.47,59.09,IMF/World Bank/National Statistics/Industry,0
+MA0027,DE,Germany,Europe,Western Alliance,2019,3891.2,1.68,1.47,200.93,110.51,4.51,0.0899,14.86,2710.6,8.69,4.8,2.47,59.52,IMF/World Bank/National Statistics/Industry,0
+MA0028,DE,Germany,Europe,Western Alliance,2020,3873.2,-0.35,0.42,169.35,108.09,4.58,0.0826,14.73,1496.4,8.99,2.22,2.48,60.3,IMF/World Bank/National Statistics/Industry,0
+MA0029,DE,Germany,Europe,Western Alliance,2021,4235.4,3.69,3.07,191.73,113.86,4.8,0.0944,14.87,1030.5,9.54,3.95,2.49,60.81,IMF/World Bank/National Statistics/Industry,0
+MA0030,DE,Germany,Europe,Western Alliance,2022,4056.7,3.07,8.33,73.45,103.04,5.0,0.1356,14.82,2721.6,10.28,5.41,2.36,61.88,IMF/World Bank/National Statistics/Industry,0
+MA0031,DE,Germany,Europe,Western Alliance,2023,4476.4,0.28,6.1,203.64,106.99,5.09,0.1564,15.12,2014.8,13.12,4.74,2.45,62.27,IMF/World Bank/National Statistics/Industry,0
+MA0032,DE,Germany,Europe,Western Alliance,2024,4606.9,1.46,2.6,209.4,109.71,5.58,0.1954,14.93,152.5,13.24,4.42,2.54,62.55,IMF/World Bank/National Statistics/Industry,1
+MA0033,DE,Germany,Europe,Western Alliance,2025,4800.6,1.89,1.95,218.98,111.49,5.78,0.2291,14.73,335.1,17.22,5.53,2.53,63.12,IMF/World Bank/National Statistics/Industry,1
+MA0034,FR,France,Europe,Western Alliance,2015,2416.2,5.06,0.0,-27.46,108.6,3.55,0.0414,18.49,1117.7,3.32,4.46,2.93,59.68,IMF/World Bank/National Statistics/Industry,0
+MA0035,FR,France,Europe,Western Alliance,2016,2491.0,1.84,0.19,-33.05,107.92,3.67,0.0522,17.74,1331.7,3.77,7.5,2.76,60.06,IMF/World Bank/National Statistics/Industry,0
+MA0036,FR,France,Europe,Western Alliance,2017,2609.1,0.78,0.99,-41.41,111.96,3.73,0.069,17.61,219.9,4.35,2.74,2.94,60.7,IMF/World Bank/National Statistics/Industry,0
+MA0037,FR,France,Europe,Western Alliance,2018,2756.3,3.83,1.72,-57.58,116.81,3.89,0.0907,18.32,615.9,4.17,3.82,2.93,61.11,IMF/World Bank/National Statistics/Industry,0
+MA0038,FR,France,Europe,Western Alliance,2019,2735.9,3.58,1.24,-48.83,110.7,4.26,0.1097,17.99,1295.7,4.44,9.32,2.9,62.21,IMF/World Bank/National Statistics/Industry,0
+MA0039,FR,France,Europe,Western Alliance,2020,2646.7,3.58,0.51,-55.33,107.69,4.32,0.1058,17.74,682.8,4.49,3.42,2.75,62.85,IMF/World Bank/National Statistics/Industry,0
+MA0040,FR,France,Europe,Western Alliance,2021,2950.0,5.11,2.03,-81.38,112.13,4.4,0.1186,18.13,926.9,5.03,6.06,2.91,62.67,IMF/World Bank/National Statistics/Industry,0
+MA0041,FR,France,Europe,Western Alliance,2022,2752.3,4.39,5.64,-129.95,103.23,4.79,0.1635,17.92,876.7,5.48,9.48,2.84,63.18,IMF/World Bank/National Statistics/Industry,0
+MA0042,FR,France,Europe,Western Alliance,2023,3033.8,0.5,5.43,-96.24,108.32,5.03,0.1813,17.66,921.0,6.08,7.07,2.82,64.16,IMF/World Bank/National Statistics/Industry,0
+MA0043,FR,France,Europe,Western Alliance,2024,3124.5,5.88,2.72,-89.05,110.6,5.45,0.224,18.4,1102.3,7.08,2.87,2.9,64.49,IMF/World Bank/National Statistics/Industry,1
+MA0044,FR,France,Europe,Western Alliance,2025,3220.1,1.85,1.78,-79.56,112.93,5.46,0.264,18.39,1197.8,8.48,5.16,2.66,64.52,IMF/World Bank/National Statistics/Industry,1
+MA0045,NL,Netherlands,Europe,Western Alliance,2015,759.7,0.22,0.19,66.22,108.15,4.54,0.079,13.74,749.9,23.62,3.85,2.22,66.34,IMF/World Bank/National Statistics/Industry,0
+MA0046,NL,Netherlands,Europe,Western Alliance,2016,782.6,5.01,0.29,66.44,108.06,4.66,0.1022,13.71,795.3,23.64,5.87,2.13,66.14,IMF/World Bank/National Statistics/Industry,0
+MA0047,NL,Netherlands,Europe,Western Alliance,2017,831.0,1.14,1.36,72.43,110.94,5.13,0.1324,14.19,96.2,28.82,4.41,2.02,67.06,IMF/World Bank/National Statistics/Industry,0
+MA0048,NL,Netherlands,Europe,Western Alliance,2018,905.5,3.17,1.62,78.52,116.58,5.39,0.1657,13.87,164.7,32.44,1.77,2.2,67.64,IMF/World Bank/National Statistics/Industry,0
+MA0049,NL,Netherlands,Europe,Western Alliance,2019,912.2,1.1,2.66,72.83,110.23,5.86,0.2192,14.05,331.8,35.58,1.87,2.09,67.88,IMF/World Bank/National Statistics/Industry,0
+MA0050,NL,Netherlands,Europe,Western Alliance,2020,901.0,4.79,1.14,58.93,106.95,5.88,0.1998,13.87,228.7,35.25,4.43,2.04,68.43,IMF/World Bank/National Statistics/Industry,0
+MA0051,NL,Netherlands,Europe,Western Alliance,2021,1016.9,1.63,2.67,86.32,114.06,6.51,0.2459,14.33,327.5,39.31,1.74,2.24,68.81,IMF/World Bank/National Statistics/Industry,0
+MA0052,NL,Netherlands,Europe,Western Alliance,2022,1006.2,5.31,10.25,74.89,102.6,6.99,0.318,14.31,706.0,40.19,5.31,1.96,69.08,IMF/World Bank/National Statistics/Industry,0
+MA0053,NL,Netherlands,Europe,Western Alliance,2023,1111.4,1.65,4.1,89.55,108.04,7.52,0.3599,13.86,177.5,48.29,3.3,2.1,69.34,IMF/World Bank/National Statistics/Industry,0
+MA0054,NL,Netherlands,Europe,Western Alliance,2024,1159.4,4.81,2.67,98.22,111.08,7.99,0.4312,14.39,503.5,52.74,2.99,2.15,69.33,IMF/World Bank/National Statistics/Industry,1
+MA0055,NL,Netherlands,Europe,Western Alliance,2025,1190.5,-0.3,2.15,98.96,112.12,8.39,0.504,14.41,279.6,59.79,1.96,2.03,69.55,IMF/World Bank/National Statistics/Industry,1
+MA0056,AE,United Arab Emirates,Middle East,Non-Aligned,2015,370.4,5.13,3.98,20.72,99.03,2.04,0.135,15.25,661.8,1.17,6.77,4.27,36.03,IMF/World Bank/National Statistics/Industry,0
+MA0057,AE,United Arab Emirates,Middle East,Non-Aligned,2016,348.0,3.97,1.68,28.34,100.55,2.19,0.2299,15.99,2804.1,1.49,5.47,4.28,36.91,IMF/World Bank/National Statistics/Industry,0
+MA0058,AE,United Arab Emirates,Middle East,Non-Aligned,2017,370.2,6.88,2.0,40.67,99.04,2.48,0.4052,18.45,7474.8,1.66,5.58,4.32,38.89,IMF/World Bank/National Statistics/Industry,0
+MA0059,AE,United Arab Emirates,Middle East,Non-Aligned,2018,414.3,4.8,3.07,35.59,99.24,2.96,0.6034,20.4,6797.4,1.69,1.92,4.43,40.4,IMF/World Bank/National Statistics/Industry,0
+MA0060,AE,United Arab Emirates,Middle East,Non-Aligned,2019,420.3,3.99,-1.89,24.91,100.77,3.43,0.9518,21.48,219.9,1.73,2.52,4.22,41.11,IMF/World Bank/National Statistics/Industry,0
+MA0061,AE,United Arab Emirates,Middle East,Non-Aligned,2020,347.1,2.0,-2.0,31.33,100.14,3.9,1.0084,24.14,7490.2,1.92,1.76,4.39,42.85,IMF/World Bank/National Statistics/Industry,0
+MA0062,AE,United Arab Emirates,Middle East,Non-Aligned,2021,411.4,1.72,-0.0,52.12,100.32,4.57,1.2154,27.57,2548.9,1.92,3.65,4.45,44.68,IMF/World Bank/National Statistics/Industry,0
+MA0063,AE,United Arab Emirates,Middle East,Non-Aligned,2022,507.8,4.7,4.76,49.45,99.98,4.98,1.5755,32.63,3594.5,2.15,5.82,4.41,45.72,IMF/World Bank/National Statistics/Industry,0
+MA0064,AE,United Arab Emirates,Middle East,Non-Aligned,2023,511.7,-0.06,4.81,42.95,99.06,5.54,2.3451,34.59,5620.5,2.7,2.48,4.37,47.21,IMF/World Bank/National Statistics/Industry,0
+MA0065,AE,United Arab Emirates,Middle East,Non-Aligned,2024,535.8,4.39,2.33,48.08,100.85,6.01,3.3594,39.12,3917.4,2.68,4.22,4.2,48.7,IMF/World Bank/National Statistics/Industry,1
+MA0066,AE,United Arab Emirates,Middle East,Non-Aligned,2025,582.2,3.01,1.92,49.84,99.16,6.57,4.2938,40.7,7225.4,3.07,4.55,4.32,50.42,IMF/World Bank/National Statistics/Industry,1
+MA0067,SA,Saudi Arabia,Middle East,Non-Aligned,2015,655.7,0.59,2.19,57.88,100.4,1.53,0.0458,7.85,10004.8,0.36,7.9,5.31,30.16,IMF/World Bank/National Statistics/Industry,0
+MA0068,SA,Saudi Arabia,Middle East,Non-Aligned,2016,643.0,0.05,2.0,9.6,99.17,1.6,0.0778,8.85,9071.3,0.45,6.17,5.25,31.02,IMF/World Bank/National Statistics/Industry,0
+MA0069,SA,Saudi Arabia,Middle East,Non-Aligned,2017,682.5,2.07,-0.51,64.55,99.51,1.83,0.1172,9.73,7425.7,0.5,6.39,5.33,32.65,IMF/World Bank/National Statistics/Industry,0
+MA0070,SA,Saudi Arabia,Middle East,Non-Aligned,2018,786.1,0.63,2.58,137.46,99.15,2.03,0.1908,11.85,779.6,0.61,4.9,5.13,33.82,IMF/World Bank/National Statistics/Industry,0
+MA0071,SA,Saudi Arabia,Middle East,Non-Aligned,2019,799.1,-0.5,-2.14,70.84,99.42,2.2,0.3754,13.66,7911.8,0.64,2.65,5.29,35.07,IMF/World Bank/National Statistics/Industry,0
+MA0072,SA,Saudi Arabia,Middle East,Non-Aligned,2020,697.9,4.68,3.23,-28.17,100.1,2.52,0.3582,16.16,6017.2,0.63,5.66,5.32,36.08,IMF/World Bank/National Statistics/Industry,0
+MA0073,SA,Saudi Arabia,Middle East,Non-Aligned,2021,798.7,6.35,3.16,55.08,100.97,2.92,0.5008,17.92,2723.6,0.68,6.84,5.34,37.15,IMF/World Bank/National Statistics/Industry,0
+MA0074,SA,Saudi Arabia,Middle East,Non-Aligned,2022,1115.3,6.38,2.55,150.04,100.22,3.6,0.5379,22.64,6844.9,0.8,3.2,5.12,38.85,IMF/World Bank/National Statistics/Industry,0
+MA0075,SA,Saudi Arabia,Middle East,Non-Aligned,2023,1054.3,0.93,2.28,96.86,100.21,3.95,0.8537,25.63,9632.3,0.82,4.61,5.26,39.76,IMF/World Bank/National Statistics/Industry,0
+MA0076,SA,Saudi Arabia,Middle East,Non-Aligned,2024,1097.4,2.61,1.77,97.35,99.92,4.55,1.2757,28.41,8240.1,0.94,6.59,5.05,40.78,IMF/World Bank/National Statistics/Industry,1
+MA0077,SA,Saudi Arabia,Middle East,Non-Aligned,2025,1207.1,4.23,1.5,111.59,100.81,5.02,1.6569,30.54,10303.2,1.15,5.44,5.06,41.87,IMF/World Bank/National Statistics/Industry,1
+MA0078,PK,Pakistan,South Asia,Non-Aligned/SCO,2015,270.4,5.48,4.47,-17.78,54.75,1.01,0.0074,24.88,449.7,0.08,6.14,7.68,9.02,IMF/World Bank/National Statistics/Industry,0
+MA0079,PK,Pakistan,South Asia,Non-Aligned/SCO,2016,284.2,5.48,3.98,-18.16,52.1,1.11,0.0106,26.76,849.7,0.09,8.34,7.7,9.28,IMF/World Bank/National Statistics/Industry,0
+MA0080,PK,Pakistan,South Asia,Non-Aligned/SCO,2017,304.5,4.94,4.16,-26.56,49.93,1.22,0.0164,27.4,166.4,0.09,11.94,7.67,10.1,IMF/World Bank/National Statistics/Industry,0
+MA0081,PK,Pakistan,South Asia,Non-Aligned/SCO,2018,312.3,3.01,5.31,-32.27,47.72,1.28,0.0256,30.76,398.2,0.11,7.73,7.76,9.92,IMF/World Bank/National Statistics/Industry,0
+MA0082,PK,Pakistan,South Asia,Non-Aligned/SCO,2019,279.0,4.89,10.75,-28.81,40.28,1.44,0.043,31.35,290.2,0.13,5.19,7.65,10.97,IMF/World Bank/National Statistics/Industry,0
+MA0083,PK,Pakistan,South Asia,Non-Aligned/SCO,2020,262.1,2.61,10.64,-22.77,37.88,1.54,0.0382,35.25,485.9,0.11,5.63,7.84,10.95,IMF/World Bank/National Statistics/Industry,0
+MA0084,PK,Pakistan,South Asia,Non-Aligned/SCO,2021,350.9,3.19,8.91,-43.63,35.2,1.79,0.0428,37.47,779.1,0.14,9.02,7.83,11.62,IMF/World Bank/National Statistics/Industry,0
+MA0085,PK,Pakistan,South Asia,Non-Aligned/SCO,2022,374.6,-0.25,21.96,-27.92,28.12,1.95,0.0534,41.69,79.2,0.15,9.62,7.7,11.67,IMF/World Bank/National Statistics/Industry,0
+MA0086,PK,Pakistan,South Asia,Non-Aligned/SCO,2023,340.9,2.82,39.15,-28.15,22.21,2.25,0.088,44.51,867.2,0.18,11.41,7.77,12.65,IMF/World Bank/National Statistics/Industry,0
+MA0087,PK,Pakistan,South Asia,Non-Aligned/SCO,2024,351.9,5.26,22.04,-27.25,25.23,2.5,0.1279,41.74,759.8,0.18,7.32,8.0,12.45,IMF/World Bank/National Statistics/Industry,1
+MA0088,PK,Pakistan,South Asia,Non-Aligned/SCO,2025,368.6,1.08,14.51,-30.42,28.23,2.8,0.1628,39.52,163.4,0.23,12.72,8.11,12.79,IMF/World Bank/National Statistics/Industry,1
+MA0089,JP,Japan,Asia-Pacific,Western Alliance,2015,4403.9,5.31,0.8,-10.13,95.41,5.14,0.0454,19.6,35908.3,13.7,3.17,3.12,62.99,IMF/World Bank/National Statistics/Industry,0
+MA0090,JP,Japan,Asia-Pacific,Western Alliance,2016,4947.5,2.47,-0.1,44.95,94.04,5.01,0.0606,20.52,8930.7,15.58,1.46,3.11,63.31,IMF/World Bank/National Statistics/Industry,0
+MA0091,JP,Japan,Asia-Pacific,Western Alliance,2017,4871.0,1.18,0.48,55.51,96.27,5.15,0.0821,19.46,31289.8,16.56,3.79,3.09,63.84,IMF/World Bank/National Statistics/Industry,0
+MA0092,JP,Japan,Asia-Pacific,Western Alliance,2018,4979.0,6.08,0.99,15.85,97.87,5.43,0.1004,20.23,9637.5,18.37,1.69,3.03,64.23,IMF/World Bank/National Statistics/Industry,0
+MA0093,JP,Japan,Asia-Pacific,Western Alliance,2019,5098.1,0.37,0.49,-4.05,94.6,5.36,0.1275,19.5,5373.9,22.41,2.97,2.97,64.89,IMF/World Bank/National Statistics/Industry,0
+MA0094,JP,Japan,Asia-Pacific,Western Alliance,2020,5017.7,3.84,0.0,34.93,91.66,5.48,0.1196,20.29,31790.2,22.36,1.18,3.17,65.73,IMF/World Bank/National Statistics/Industry,0
+MA0095,JP,Japan,Asia-Pacific,Western Alliance,2021,4984.2,1.4,-0.2,-38.22,88.23,5.75,0.1605,20.32,31210.2,22.7,2.58,2.99,65.92,IMF/World Bank/National Statistics/Industry,0
+MA0096,JP,Japan,Asia-Pacific,Western Alliance,2022,4221.2,0.87,2.6,-149.55,80.22,6.14,0.2843,22.54,28755.1,24.44,3.45,3.03,66.92,IMF/World Bank/National Statistics/Industry,0
+MA0097,JP,Japan,Asia-Pacific,Western Alliance,2023,4230.6,5.39,3.16,-70.58,82.53,6.44,0.4255,24.29,33868.1,26.5,2.84,3.16,66.61,IMF/World Bank/National Statistics/Industry,0
+MA0098,JP,Japan,Asia-Pacific,Western Alliance,2024,4162.0,5.39,2.47,-48.04,84.44,6.74,0.6007,26.14,6609.7,30.55,3.1,3.12,67.65,IMF/World Bank/National Statistics/Industry,1
+MA0099,JP,Japan,Asia-Pacific,Western Alliance,2025,4326.9,2.76,1.92,-31.32,86.08,7.05,0.6933,27.7,33602.7,39.06,1.89,3.25,68.18,IMF/World Bank/National Statistics/Industry,1
+MA0100,IN,India,South Asia,Non-Aligned,2015,2099.1,6.2,4.86,-123.62,67.98,3.57,0.0143,20.41,12435.3,0.84,9.8,4.97,45.61,IMF/World Bank/National Statistics/Industry,0
+MA0101,IN,India,South Asia,Non-Aligned,2016,2310.7,5.74,4.33,-100.96,66.54,3.86,0.0216,22.28,3375.8,0.97,5.07,5.09,47.09,IMF/World Bank/National Statistics/Industry,0
+MA0102,IN,India,South Asia,Non-Aligned,2017,2663.3,4.86,3.54,-152.02,65.39,4.11,0.03,24.21,6714.3,1.04,3.76,5.0,48.69,IMF/World Bank/National Statistics/Industry,0
+MA0103,IN,India,South Asia,Non-Aligned,2018,2687.7,7.42,3.38,-164.47,64.62,4.29,0.0446,26.75,3251.2,1.15,7.5,5.02,49.42,IMF/World Bank/National Statistics/Industry,0
+MA0104,IN,India,South Asia,Non-Aligned,2019,2869.1,2.13,4.99,-163.17,63.58,4.78,0.0627,28.45,14708.9,1.31,10.17,4.9,50.81,IMF/World Bank/National Statistics/Industry,0
+MA0105,IN,India,South Asia,Non-Aligned,2020,2691.2,4.83,6.13,-101.59,63.2,4.93,0.0557,29.14,2462.0,1.16,5.08,5.08,51.11,IMF/World Bank/National Statistics/Industry,0
+MA0106,IN,India,South Asia,Non-Aligned,2021,3176.3,8.71,5.72,-193.53,61.51,5.48,0.0787,31.29,14820.4,1.29,7.58,5.08,53.02,IMF/World Bank/National Statistics/Industry,0
+MA0107,IN,India,South Asia,Non-Aligned,2022,3402.3,7.06,6.68,-269.81,59.51,6.14,0.1176,38.1,986.0,1.62,6.79,5.11,54.06,IMF/World Bank/National Statistics/Industry,0
+MA0108,IN,India,South Asia,Non-Aligned,2023,3760.6,2.46,5.26,-253.16,59.47,6.48,0.1595,41.85,2957.1,1.82,4.51,4.91,54.96,IMF/World Bank/National Statistics/Industry,0
+MA0109,IN,India,South Asia,Non-Aligned,2024,4078.9,9.04,4.28,-247.15,58.01,6.99,0.2206,44.09,7620.0,1.9,10.1,4.85,56.38,IMF/World Bank/National Statistics/Industry,1
+MA0110,IN,India,South Asia,Non-Aligned,2025,4511.2,3.14,3.82,-271.03,56.7,7.41,0.266,47.27,9892.5,2.22,3.39,5.01,57.29,IMF/World Bank/National Statistics/Industry,1
+MA0111,KR,South Korea,Asia-Pacific,Western Alliance,2015,1371.4,6.17,0.71,94.06,87.38,6.18,0.1458,18.16,6948.3,36.11,1.34,5.03,71.14,IMF/World Bank/National Statistics/Industry,0
+MA0112,KR,South Korea,Asia-Pacific,Western Alliance,2016,1402.5,-0.34,0.96,89.97,87.2,6.2,0.2139,17.79,6530.8,40.93,1.32,4.83,71.15,IMF/World Bank/National Statistics/Industry,0
+MA0113,KR,South Korea,Asia-Pacific,Western Alliance,2017,1543.3,4.94,1.99,93.12,89.67,6.54,0.2916,17.95,2919.7,47.77,4.64,4.82,71.88,IMF/World Bank/National Statistics/Industry,0
+MA0114,KR,South Korea,Asia-Pacific,Western Alliance,2018,1625.4,6.83,1.54,68.49,90.85,6.95,0.3692,18.38,9329.6,51.3,2.28,5.03,72.95,IMF/World Bank/National Statistics/Industry,0
+MA0115,KR,South Korea,Asia-Pacific,Western Alliance,2019,1663.5,3.85,0.41,41.25,88.71,7.71,0.4809,18.46,9298.5,59.03,2.52,4.94,73.46,IMF/World Bank/National Statistics/Industry,0
+MA0116,KR,South Korea,Asia-Pacific,Western Alliance,2020,1646.6,6.0,0.51,46.42,86.67,7.67,0.4555,19.92,8236.0,49.5,3.8,4.87,74.3,IMF/World Bank/National Statistics/Industry,0
+MA0117,KR,South Korea,Asia-Pacific,Western Alliance,2021,1781.3,4.51,2.54,30.28,90.38,8.65,0.5614,22.53,8204.6,57.48,4.51,4.97,74.52,IMF/World Bank/National Statistics/Industry,0
+MA0118,KR,South Korea,Asia-Pacific,Western Alliance,2022,1672.0,6.01,5.34,-49.13,83.71,8.76,0.8373,23.44,3211.3,72.34,2.6,4.94,75.37,IMF/World Bank/National Statistics/Industry,0
+MA0119,KR,South Korea,Asia-Pacific,Western Alliance,2023,1721.6,0.87,3.53,17.91,85.77,9.26,1.1617,25.5,5922.7,80.69,2.55,4.99,75.52,IMF/World Bank/National Statistics/Industry,0
+MA0120,KR,South Korea,Asia-Pacific,Western Alliance,2024,1809.8,2.92,2.31,39.09,87.83,9.64,1.5471,25.33,8023.5,90.76,3.7,4.98,76.08,IMF/World Bank/National Statistics/Industry,1
+MA0121,KR,South Korea,Asia-Pacific,Western Alliance,2025,1903.3,6.56,2.02,55.61,90.43,9.9,1.8389,27.32,11021.6,89.32,4.51,4.82,76.96,IMF/World Bank/National Statistics/Industry,1
+MA0122,TW,Taiwan,Asia-Pacific,Western Alliance,2015,533.7,5.68,-0.31,49.07,91.9,20.19,0.5621,11.92,5520.5,63.12,3.23,8.2,83.31,IMF/World Bank/National Statistics/Industry,0
+MA0123,TW,Taiwan,Asia-Pacific,Western Alliance,2016,546.7,-0.35,1.42,49.68,91.92,21.4,0.7317,12.03,13330.1,75.62,2.66,8.28,83.04,IMF/World Bank/National Statistics/Industry,0
+MA0124,TW,Taiwan,Asia-Pacific,Western Alliance,2017,569.6,0.13,0.6,60.36,93.9,22.06,0.9657,12.12,4470.8,78.18,2.01,8.26,83.97,IMF/World Bank/National Statistics/Industry,0
+MA0125,TW,Taiwan,Asia-Pacific,Western Alliance,2018,607.2,3.94,1.33,62.34,94.52,23.09,1.1528,12.12,5182.3,87.98,1.69,8.34,84.5,IMF/World Bank/National Statistics/Industry,0
+MA0126,TW,Taiwan,Asia-Pacific,Western Alliance,2019,618.1,3.17,0.58,55.04,92.14,24.58,1.4561,12.23,10997.0,98.11,2.74,8.35,84.78,IMF/World Bank/National Statistics/Industry,0
+MA0127,TW,Taiwan,Asia-Pacific,Western Alliance,2020,668.7,3.86,-0.21,65.07,92.92,25.13,1.2711,11.79,7753.8,97.83,3.32,8.05,85.51,IMF/World Bank/National Statistics/Industry,0
+MA0128,TW,Taiwan,Asia-Pacific,Western Alliance,2021,770.9,6.06,1.93,66.08,94.56,27.76,1.4269,12.32,3910.5,98.03,1.21,8.45,86.14,IMF/World Bank/National Statistics/Industry,0
+MA0129,TW,Taiwan,Asia-Pacific,Western Alliance,2022,758.4,4.68,2.77,52.82,91.58,30.87,2.1098,12.31,5600.5,117.06,3.24,8.59,86.31,IMF/World Bank/National Statistics/Industry,0
+MA0130,TW,Taiwan,Asia-Pacific,Western Alliance,2023,745.3,2.91,2.51,58.27,91.13,32.42,2.9519,11.65,14611.7,125.91,2.99,8.93,86.56,IMF/World Bank/National Statistics/Industry,0
+MA0131,TW,Taiwan,Asia-Pacific,Western Alliance,2024,799.6,3.38,2.28,71.63,92.22,33.41,3.7521,11.86,2099.6,153.33,3.95,9.2,87.74,IMF/World Bank/National Statistics/Industry,1
+MA0132,TW,Taiwan,Asia-Pacific,Western Alliance,2025,863.1,5.87,1.85,82.03,94.72,35.29,4.4025,11.89,14563.5,185.88,1.85,9.47,87.9,IMF/World Bank/National Statistics/Industry,1

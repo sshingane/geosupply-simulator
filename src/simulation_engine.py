@@ -43,7 +43,9 @@ class SimulationResult:
     trade_impacts: pd.DataFrame
     energy_impacts: pd.DataFrame
     company_impacts: pd.DataFrame
-    total_trade_reduction_millions: float
+    total_trade_reduction_millions: float  # Net disruption
+    gross_trade_disruption_millions: float  # Gross disruption before rerouting
+    rerouted_volume_millions: float  # Volume successfully rerouted
     affected_exporter_countries: List[str]
     affected_importer_countries: List[str]
 
@@ -79,16 +81,21 @@ def run_simulation(
             affected_exporters.update(shock.exporters)
             affected_importers.update(trade.loc[mask, "importer_country_code"].unique().tolist())
 
-    # Compute new trade values
-    trade["new_trade_value"] = trade["trade_value_usd_millions"] * trade["shock_multiplier"]
-    trade["trade_reduction"] = trade["trade_value_usd_millions"] - trade["new_trade_value"]
+    # Compute trade reduction on DISRUPTED routes only
+    trade["trade_reduction"] = 0.0
+    trade.loc[trade["is_disrupted"], "trade_reduction"] = (
+        trade.loc[trade["is_disrupted"], "trade_value_usd_millions"]
+        * (1 - trade.loc[trade["is_disrupted"], "shock_multiplier"])
+    )
+
+    gross_disruption = trade["trade_reduction"].sum()
+    total_rerouted = 0.0
 
     # --- Cascade Rerouting ---
     # For each affected importer, try to find alternative suppliers
-    rerouted_volume = {}
     for importer in affected_importers:
         imp_mask = trade["importer_country_code"] == importer
-        disrupted = trade[imp_mask & trade["is_disrupted"]]
+        disrupted = trade[imp_mask & trade["is_disrupted"]].copy()
 
         for _, row in disrupted.iterrows():
             hw = row["hardware_type"]
@@ -116,20 +123,18 @@ def run_simulation(
                 available = alt["trade_value_usd_millions"] * 0.3  # assume 30% spare capacity
                 take = min(available, reroute_capacity - rerouted)
                 if take > 0:
-                    trade.at[idx, "new_trade_value"] += take
                     rerouted += take
                 if rerouted >= reroute_capacity:
                     break
 
-            # Reduce the original disruption slightly due to rerouting
+            # Reduce the original disruption due to rerouting
             if rerouted > 0:
                 orig_idx = row.name
-                trade.at[orig_idx, "new_trade_value"] += rerouted
                 trade.at[orig_idx, "trade_reduction"] -= rerouted
+                total_rerouted += rerouted
 
-    # Recalculate totals after rerouting
-    trade["trade_reduction"] = trade["trade_value_usd_millions"] - trade["new_trade_value"]
-    total_reduction = trade["trade_reduction"].sum()
+    # Recalculate net total after rerouting
+    net_disruption = trade["trade_reduction"].sum()
 
     # --- Country Impact Aggregation ---
     country_impacts = []
@@ -146,14 +151,27 @@ def run_simulation(
         imp_loss = trade.loc[imp_mask, "trade_reduction"].sum()
         imp_baseline = trade.loc[imp_mask, "trade_value_usd_millions"].sum()
 
-        # Sovereignty impact: importers lose more sovereignty when they lose supply
-        sov_delta = -(imp_loss / 1000) * 0.5  # rough scaling
-        # Exporters gain sovereignty if they are imposing control (simplified)
-        if cc in affected_exporters:
-            sov_delta += 1.0  # small sovereignty gain from control
+        # Import dependency ratio (fraction of imports disrupted)
+        total_imports = imp_baseline
+        if total_imports > 0:
+            import_dependency = imp_loss / total_imports
+        else:
+            import_dependency = 0.0
 
-        new_sov = row["ai_sovereignty_index"] + sov_delta
-        new_geo = row["geopolitical_risk_score"] + (imp_loss / 1000) * 0.3
+        # Sovereignty impact: based on import dependency
+        sov_delta = -import_dependency * 20  # 100% loss -> -20 points
+
+        # Exporters gain sovereignty proportional to customer dependency
+        if cc in affected_exporters:
+            sov_delta += min(5.0, import_dependency * 10)
+
+        # Apply and cap
+        new_sov_raw = row["ai_sovereignty_index"] + sov_delta
+        new_sov = max(0.0, min(100.0, new_sov_raw))
+
+        # Geo-risk: based on import dependency
+        geo_delta = import_dependency * 10  # 100% loss -> +10 points
+        new_geo = row["geopolitical_risk_score"] + geo_delta
 
         country_impacts.append(
             {
@@ -163,12 +181,14 @@ def run_simulation(
                 "baseline_sovereignty": row["ai_sovereignty_index"],
                 "new_sovereignty": new_sov,
                 "sovereignty_delta": sov_delta,
+                "sovereignty_raw": new_sov_raw,
                 "baseline_geo_risk": row["geopolitical_risk_score"],
                 "new_geo_risk": new_geo,
-                "geo_risk_delta": new_geo - row["geopolitical_risk_score"],
+                "geo_risk_delta": geo_delta,
                 "exporter_loss_millions": exp_loss,
                 "importer_loss_millions": imp_loss,
                 "total_trade_baseline_millions": exp_baseline + imp_baseline,
+                "import_dependency": import_dependency,
             }
         )
 
@@ -182,10 +202,10 @@ def run_simulation(
         country_row = shocked_countries[shocked_countries["country_code"] == cc]
         if country_row.empty:
             continue
-        imp_loss = country_row.iloc[0]["importer_loss_millions"]
+        import_dependency = country_row.iloc[0]["import_dependency"]
 
         # If a country loses chip supply, AI buildout slows -> energy demand growth decreases
-        energy_delta = -(imp_loss / 10000) * row["pct_grid_used_by_ai"]
+        energy_delta = -import_dependency * row["pct_grid_used_by_ai"] / 10
         new_stress = max(0.0, row["ai_grid_stress_index"] + energy_delta)
 
         energy_impacts.append(
@@ -197,6 +217,7 @@ def run_simulation(
                 "grid_stress_delta": new_stress - row["ai_grid_stress_index"],
                 "baseline_pct_grid_ai": row["pct_grid_used_by_ai"],
                 "energy_constraint_level": row["energy_constraint_level"],
+                "import_dependency": import_dependency,
             }
         )
     energy_impacts_df = pd.DataFrame(energy_impacts)
@@ -248,7 +269,7 @@ def run_simulation(
     company_impacts_df = pd.DataFrame(company_impacts)
     # Keep all companies, including those with zero trade exposure
 
-    # Trade impact detail table
+    # Trade impact detail table (disrupted routes only)
     trade_impacts = trade[trade["is_disrupted"]].copy()
     trade_impacts = trade_impacts[
         [
@@ -258,7 +279,6 @@ def run_simulation(
             "importer_country",
             "hardware_type",
             "trade_value_usd_millions",
-            "new_trade_value",
             "trade_reduction",
             "trade_route",
         ]
@@ -269,7 +289,9 @@ def run_simulation(
         trade_impacts=trade_impacts,
         energy_impacts=energy_impacts_df,
         company_impacts=company_impacts_df,
-        total_trade_reduction_millions=total_reduction,
+        total_trade_reduction_millions=net_disruption,
+        gross_trade_disruption_millions=gross_disruption,
+        rerouted_volume_millions=total_rerouted,
         affected_exporter_countries=sorted(list(affected_exporters)),
         affected_importer_countries=sorted(list(affected_importers)),
     )

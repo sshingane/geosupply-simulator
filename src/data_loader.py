@@ -181,9 +181,12 @@ def get_simulation_base_state(dfs: dict[str, pd.DataFrame]) -> dict:
     ]
     baseline = baseline.merge(energy_latest, on="country_code", how="left")
 
+    # Use only latest year trade flows for simulation
+    trade_latest = dfs["trade_flows"][dfs["trade_flows"]["year"] == latest_year].copy()
+
     return {
         "latest_year": latest_year,
         "baseline_countries": baseline,
-        "trade_flows": dfs["trade_flows"].copy(),
+        "trade_flows": trade_latest,
         "sanctions": dfs["sanctions"].copy(),
     }

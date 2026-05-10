@@ -108,11 +108,24 @@ if shocks:
         )
 
     # Metrics row
+    st.subheader("Trade Disruption Metrics")
     m1, m2, m3, m4 = st.columns(4)
-    m1.metric("Trade Reduction", f"${result.total_trade_reduction_millions:,.0f}M")
-    m2.metric("Exporters Affected", len(result.affected_exporter_countries))
-    m3.metric("Importers Affected", len(result.affected_importer_countries))
-    m4.metric("Companies Hit", len(result.company_impacts))
+    m1.metric(
+        "Gross Disruption",
+        f"${result.gross_trade_disruption_millions:,.0f}M",
+        help="Total value lost on disrupted trade routes before any rerouting occurs."
+    )
+    m2.metric(
+        "Rerouted Volume",
+        f"${result.rerouted_volume_millions:,.0f}M",
+        help="Volume successfully shifted to alternative suppliers."
+    )
+    m3.metric(
+        "Net Disruption",
+        f"${result.total_trade_reduction_millions:,.0f}M",
+        help="Gross disruption minus rerouted volume = true economic loss after supply chain adaptation."
+    )
+    m4.metric("Companies Affected", len(result.company_impacts))
 
     # Map + Charts
     col_left, col_right = st.columns([2, 1])
@@ -126,7 +139,7 @@ if shocks:
         fig = build_choropleth_map(
             map_df,
             color_col="geo_risk_delta",
-            hover_cols=["baseline_geo_risk", "new_geo_risk", "sovereignty_delta"],
+            hover_cols=["baseline_geo_risk", "new_geo_risk", "sovereignty_delta", "import_dependency"],
             title="Geopolitical Risk Score Change",
             zoom_to_affected=True,
             affected_codes=result.affected_exporter_countries + result.affected_importer_countries,
@@ -155,7 +168,13 @@ if shocks:
         st.dataframe(result.trade_impacts.sort_values("trade_reduction", ascending=False))
 
     with st.expander("View Country Metrics"):
-        st.dataframe(result.shocked_countries.sort_values("geo_risk_delta", ascending=False))
+        display_cols = [
+            "country", "region",
+            "baseline_sovereignty", "new_sovereignty", "sovereignty_delta", "sovereignty_raw",
+            "baseline_geo_risk", "new_geo_risk", "geo_risk_delta",
+            "importer_loss_millions", "import_dependency",
+        ]
+        st.dataframe(result.shocked_countries[display_cols].sort_values("geo_risk_delta", ascending=False))
 
     with st.expander("View Company Impacts"):
         st.dataframe(result.company_impacts.sort_values("estimated_stock_impact_pct", ascending=False))

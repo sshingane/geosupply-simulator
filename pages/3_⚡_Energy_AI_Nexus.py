@@ -44,14 +44,10 @@ filtered_profiles = country_profiles[
     & (country_profiles["year"] <= year_range[1])
 ].copy()
 
-# Merge for scatter plot
-scatter_df = filtered_profiles.merge(
-    filtered_energy[["country_code", "year", "renewable_energy_pct", "pct_grid_used_by_ai", "ai_grid_stress_index", "energy_constraint_level"]],
-    on=["country_code", "year"],
-    how="inner",
-)
-
 # Scatter plot
+# Note: filtered_profiles already contains all energy columns (merged in data_loader)
+scatter_df = filtered_profiles.copy()
+
 st.subheader("Renewable Energy vs AI Grid Use")
 if not scatter_df.empty:
     fig1 = build_energy_scatter(scatter_df)
@@ -87,11 +83,7 @@ else:
 st.subheader("Carbon Intensity per AI Investment")
 if not filtered_profiles.empty and "total_ai_investment_usd_bn" in filtered_profiles.columns:
     carbon_df = filtered_profiles.copy()
-    carbon_df = carbon_df.merge(
-        filtered_energy[["country_code", "year", "carbon_intensity_gco2_per_kwh"]],
-        on=["country_code", "year"],
-        how="inner",
-    )
+    # carbon_intensity_gco2_per_kwh already present in filtered_profiles (merged in data_loader)
     carbon_df["carbon_per_ai_invest"] = (
         carbon_df["carbon_intensity_gco2_per_kwh"] / carbon_df["total_ai_investment_usd_bn"].replace(0, pd.NA)
     )

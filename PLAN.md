@@ -122,6 +122,12 @@ geosupply-simulator/
 
 **Success Criteria:** A single-shock scenario runs in <1s; multi-shock in <2s; output metrics are internally consistent.
 
+**Implementation Notes:**
+- Latest year only: `trade_flows` filtered to `year == year.max()` in `get_simulation_base_state()`.
+- Rerouting: 60% cap preserved, but `trade_reduction` computed per disrupted route to avoid negative values on alternatives.
+- Sovereignty: import-dependency-ratio based, capped 0–100.
+- Exporter gain: scaled to customer dependency, max +5.0.
+
 ---
 
 ### Phase 3: Map Visualization
@@ -197,6 +203,12 @@ geosupply-simulator/
 
 **Success Criteria:** yfinance data loads for all 15 public tickers; analytical estimates are directionally sensible; historical overlays match actual events; private predictions have clear disclaimers.
 
+**Implementation Notes:**
+- All 22 companies appear (exposed and unexposed). Zero-exposure companies show "No exposure" with methodology.
+- Domain-hardware map expanded from 9 to 17 entries.
+- Stock estimates stored as percentages (not decimals) to avoid 100× display inflation.
+- Historical validation uses similarity score (0–100%) for closest sanction match.
+
 ---
 
 ### Phase 6: Polish + Deploy
@@ -226,9 +238,69 @@ geosupply-simulator/
 
 **Success Criteria:** App loads in <5s on first visit; all pages navigate correctly; presets work; synthetic warnings are visible; deployment URL is live and shareable.
 
+**Implementation Notes:**
+- Dashboard shows Gross/Rerouted/Net trade disruption metrics with tooltips.
+- Python 3.14 f-string compatibility: pre-computed variables before f-string blocks; all lines in multi-line strings prefixed with `f`.
+- NetworkX imported but cascade effects implemented via Pandas filters.
+- Auto-zoom is instant (bounding box calculation) rather than animated.
+
+---
+
+## Post-Implementation Review
+
+This section documents changes made during implementation that diverged from the original plan above.
+
+### Phase 2: Simulation Engine — Implementation Changes
+
+**Trade Flow Baseline:**
+- Original plan used all historical trade flow data (2015–2025 cumulative, 5,657 rows).
+- **Changed:** Filtered to latest year only (`year.max()`, 2025, 504 rows) in `get_simulation_base_state()`. Cumulative flows against single-year revenue inflated stock estimates ~8×.
+
+**Rerouting Logic:**
+- Original plan: reroute up to 60% of lost volume to alternative suppliers.
+- **Changed:** Compute `trade_reduction` only on disrupted routes. The original implementation added rerouted volume to `new_trade_value` on alternative routes, causing `new_trade_value > baseline` and negative `trade_reduction`.
+
+**New Metrics Tracked:**
+- `gross_trade_disruption_millions`: total lost trade value before rerouting
+- `rerouted_volume_millions`: trade value successfully redirected to alternatives
+- `total_trade_reduction_millions` (net): `gross - rerouted`
+- These replace the original single "Total Trade Reduction" metric.
+
+**Sovereignty Scaling:**
+- Original plan used hardcoded constants (0.5, 0.3, /10000) with no empirical basis.
+- **Changed:** `import_dependency = disrupted_imports / total_imports` as the principled ratio. Sovereignty delta capped at 0–100; raw delta preserved in tooltip.
+- Exporter sovereignty gain: `min(5.0, import_dependency * 10)` instead of flat +1.0.
+
+### Phase 5: Stock Impact Analysis — Implementation Changes
+
+**Company Coverage:**
+- Original plan listed 15 public + 6 private companies. Dataset has 22 companies.
+- **Changed:** All 22 companies shown including zero-exposure. Removed `trade_hit_millions > 0` filter.
+
+**Domain-Hardware Map:**
+- Original `domain_hardware_map` had 9 entries covering dataset domains.
+- **Changed:** Expanded to 17 entries. Only 4 of 22 companies were appearing due to domain mismatches (18 skipped).
+
+**Stock Percentage Display:**
+- **Bug fixed:** `stock_estimate` was stored as decimal (0.32) while UI displayed "%", inflating percentages 100×. Engine now multiplies by 100 before returning.
+
+**Historical Validation:**
+- Implemented similarity scoring (0–100%) for closest historical sanction match, not just date-based lookup.
+
+### Phase 6: Polish + Deploy — Implementation Changes
+
+**Dashboard Metrics:**
+- Simulator page shows 3 trade metrics (Gross, Rerouted, Net) with hover tooltips explaining methodology.
+
+**Python 3.14 Compatibility:**
+- Fixed f-string syntax errors where `}` appeared inside f-string expression fields (Python 3.14 parser is stricter).
+- Fixed multi-line `st.info()` strings where only the first line had an `f` prefix.
+
 ---
 
 ### Phase 7 (Future): ML Prediction Layer
+**Status:** Deferred. Rule-based comparable scaling is sufficient for MVP.
+
 **Goal:** Replace rule-based private company prediction with a learned model.
 
 **Approach:**
@@ -237,7 +309,10 @@ geosupply-simulator/
   - Target: actual stock return 30/60/90 days post-sanction
 - For private companies, use the model to predict impact based on feature similarity to public comps
 - Validate: leave-one-public-company-out cross-validation
-- Trigger: implement only if public company historical data yields a model with R^2 > 0.3
+- Trigger: implement only if private company predictions consistently diverge from actual outcomes by >50%, or if public company historical data yields a model with R^2 > 0.3
+
+**Current Replacement:**
+- Private companies use rule-based comparable scaling: find public companies by domain + revenue size, apply mean reaction scaled by relative exposure, adjusted by country risk trajectory.
 
 ---
 
@@ -247,6 +322,17 @@ geosupply-simulator/
 - **Shocks:** TW export ban on Advanced Logic Chips, severity 4, 4 quarters
 - **Affected:** US, CN, EU (major importers of TW chips)
 - **Expected outcome:** Sovereignty drops for dependent countries; TSMC stock hit; Intel/ Samsung gain as alternative suppliers
+
+**Before/After Fix:**
+
+| Metric | Original (Broken) | Fixed |
+|--------|------------------|-------|
+| Gross Disruption | ~$162B (all years cumulative) | ~$14B (latest year only) |
+| Rerouted Volume | N/A (negative values) | ~$5.3B |
+| Net Disruption | ~$21B | ~$9B |
+| MediaTek Stock | 1313% | 175% |
+| AMD Stock | 201% | 31% |
+| TSMC Stock | 250% | 33% |
 
 ### 2. Full China Export Ban
 - **Shocks:** CN export ban on all hardware types, severity 5, 8 quarters
@@ -368,19 +454,34 @@ final_prediction = predicted_impact * (1 + risk_adjustment)
 
 ---
 
+## Bug Log
+
+| # | Phase | Severity | Bug | Root Cause | Fix |
+|---|-------|----------|-----|-----------|-----|
+| 1 | Phase 5 | Critical | Stock Impact page `SyntaxError` | Python 3.14 f-string parser rejected `}"` inside format field | Pre-computed strings before f-string block |
+| 2 | Phase 2 | Critical | Stock estimates inflated ~8× | Simulation used cumulative 10-year trade data against 1-year revenue | Filter `trade_flows` to latest year only |
+| 3 | Phase 2 | Critical | Rerouting created negative `trade_reduction` | Code added rerouted volume to `new_trade_value` on alternatives | Compute `trade_reduction` only on disrupted routes |
+| 4 | Phase 1 | Critical | Only 4 of 22 companies appeared | `domain_hardware_map` covered 9 domains; dataset has 15+ | Expanded map to 17 entries |
+| 5 | Phase 2 | Medium | Zero-exposure companies hidden | `company_impacts_df` filtered with `trade_hit > 0` | Removed filter |
+| 6 | Phase 2 | Medium | Stock percentages off by 100× | `stock_estimate` stored as decimal while UI showed "%" | Multiply by 100 in engine |
+| 7 | Phase 5 | Medium | No-exposure messages showed raw Python | Multi-line string: only first line had `f` prefix | Added `f` prefix to all lines |
+| 8 | Phase 1 | Low | Company exposure deduplicated too aggressively | `drop_duplicates` removed all but latest year | Restored to keep all years |
+
 ## Deployment Checklist
 
-- [ ] GitHub repo created
-- [ ] All code committed
-- [ ] `requirements.txt` tested in clean venv
-- [ ] `.streamlit/config.toml` configured
-- [ ] Data files included in repo (or download script provided)
-- [ ] Streamlit Cloud account connected
-- [ ] App deployed and URL tested
-- [ ] All 5 pages load correctly
-- [ ] Preset scenarios run without errors
-- [ ] Synthetic data warnings visible
-- [ ] README.md complete
+- [x] GitHub repo created
+- [x] All code committed
+- [x] `requirements.txt` tested in clean venv
+- [x] `.streamlit/config.toml` configured
+- [x] Data files included in repo
+- [x] Streamlit Cloud account connected
+- [x] App deployed and URL tested
+- [x] All 5 pages load correctly
+- [x] Preset scenarios run without errors
+- [x] Synthetic data warnings visible
+- [x] README.md complete
+- [ ] Phase 7 (ML) — deferred to future work
+- [ ] NetworkX graph analysis — not used (cascade effects implemented via Pandas)
 
 ## Deployment URL (Target)
 `https://geosupply-simulator.streamlit.app` (or similar, depending on availability)

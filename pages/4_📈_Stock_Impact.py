@@ -235,9 +235,11 @@ if run_sim and exporters and selected_hardware:
                             else:
                                 st.caption("No sufficiently similar historical event found in the dataset.")
                 else:
-                    st.info(f"**{company}** has no trade flow exposure to this shock. "
-                            "Its headquarters in {row['hq_country_code']} and domain ({row['primary_domain']}) "
-                            "are not directly linked to the disrupted trade routes or hardware types.")
+                    st.info(
+                        f"**{company}** has no trade flow exposure to this shock. "
+                        f"Its headquarters in {row['hq_country_code']} and domain ({row['primary_domain']}) "
+                        f"are not directly linked to the disrupted trade routes or hardware types."
+                    )
 
     with tab_private:
         st.subheader("Private Company Predicted Impact")
@@ -316,9 +318,11 @@ if run_sim and exporters and selected_hardware:
                             """
                         )
                 else:
-                    st.info(f"**{company}** has no trade flow exposure to this shock. "
-                            "Its headquarters in {row['hq_country_code']} and domain ({row['primary_domain']}) "
-                            "are not directly linked to the disrupted trade routes or hardware types.")
+                    st.info(
+                        f"**{company}** has no trade flow exposure to this shock. "
+                        f"Its headquarters in {row['hq_country_code']} and domain ({row['primary_domain']}) "
+                        f"are not directly linked to the disrupted trade routes or hardware types."
+                    )
 
 else:
     st.info("Configure a shock in the sidebar and click **Run Impact Analysis**.")
